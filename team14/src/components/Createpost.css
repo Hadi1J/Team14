@@ -1,0 +1,116 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+body {
+    background-color: #F0F2F5;
+    font-family: Arial, sans-serif;
+}
+.big{
+    display: flex; 
+    
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+
+}
+.post-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+.post-box .user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.post-input {
+    border: none;
+    box-shadow: none;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.post-input::placeholder {
+    color: #606770;
+}
+.post-input:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.action-buttons {
+    gap: 0.7rem;
+}
+.action-buttons .btn {
+    
+    font-size: 14px;
+    color: #606770;
+    background-color: #F0F2F5;
+    border: none;
+   /* margin-right: 10px;*/
+   padding: 9px;
+   height: fit-content;
+}
+
+.action-buttons .btn i {
+    margin-right: 5px;
+}
+.more-options {
+    color: #606770;
+    font-size: 24px;
+    cursor: pointer;
+    
+}
+.bi-calendar2-event-fill{
+ color: #d6293e;
+
+}
+.fa-smile{
+color:#f7c32e;
+    
+}
+.bi-camera-reels-fill{
+ color: rgba(var(--bs-info-rgb));
+}
+.bi-image-fill{
+color:rgba(12,188,135);
+
+}
+.sharepost .btn-lg{
+font-size: 10px; 
+font-weight: bold;
+text-align: center;
+padding-right: 44PX;
+width:30px;
+height: 30px;
+
+}
+.sharepost{
+    padding-left: 405px;
+}
+.post-button {
+    border: 0px;
+    border-radius: 0.4em;
+    padding: 9px;
+    text-transform: capitalize;
+}
+.post-button:disabled {
+    cursor: not-allowed;
+    color: #0cbc87;
+    background-color: rgba(12, 188, 135, 0.1);
+}
+.post-button:not(:disabled) {
+    color: #fff !important;
+    background-color: #0cbc87 !important;
+    border-color: #0cbc87 !important;
+    cursor: pointer;
+}
+
+.background-gray {
+    --bs-bg-opacity: 1;
+    background-color: rgba(238, 240, 242, var(--bs-bg-opacity)) !important;
+}

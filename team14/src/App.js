@@ -1,9 +1,10 @@
+import CreatePost from "./Createpost";
+
 function App() {
   return (
     <div className="App">
-      
-      <div className="content">"app content hello"</div>
-      
+      <CreatePost/>
+     
     </div>
   );
 }
