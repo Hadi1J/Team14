@@ -1,8 +1,45 @@
-import React from "react";
+
 import "./post.css";
 import logo from "./03.jpg";
+import React, { useState, useEffect } from "react";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  push,
+  set,
+  child,
+  get,
+} from "firebase/database";
 
 const Posts = ({ posts, loading }) => {
+  const [commentText, setCommentText] = useState("");
+  const [selectedPostForComment, setSelectedPostForComment] = useState(null);
+  const [comments, setComments] = useState({});
+  const fetchCommentsForPost = async (postId) => {
+    const database = getDatabase();
+    const commentsRef = ref(database, "comments");
+
+    try {
+      const snapshot = await get(commentsRef);
+      const data = snapshot.val();
+      const postComments = Object.values(data || {}).filter(
+        (comment) => comment.postId === postId
+      );
+
+      setComments((prevComments) => ({
+        ...prevComments,
+        [postId]: postComments,
+      }));
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+  const handleComment = (postId) => {
+    setSelectedPostForComment(postId);
+    setCommentText("");
+    fetchCommentsForPost(postId);
+  };
   return (
     <div>
       <h2>Posts</h2>
