@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
-import { database } from "./firebase"; 
-import "./components/Createpost.css"; 
+import { database } from "../firebase"; 
+import "./Createpost.css"; 
 import logo from "./03.jpg";
+
 const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const staticProfileName = "Ahmed sheqo";

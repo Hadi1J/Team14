@@ -1,10 +1,9 @@
-import CreatePost from "./Createpost";
+import PostManager from "./components/PostManager";
 
 function App() {
   return (
     <div className="App">
-      <CreatePost/>
-     
+      <PostManager/>
     </div>
   );
 }
