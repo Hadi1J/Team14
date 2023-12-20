@@ -12,11 +12,35 @@ import {
   get,
 } from "firebase/database";
 
-const Posts = ({ posts, loading }) => {
+const Posts = ({ posts, loading }) => { 
+  const [interactionData, setInteractionData] = useState({});
+
   const [commentText, setCommentText] = useState("");
   const [selectedPostForComment, setSelectedPostForComment] = useState(null);
   const [comments, setComments] = useState({});
+  
+  useEffect(() => {
+    const fetchInteractionData = async () => {
+      const database = getDatabase();
+      const interactionsRef = ref(database, "interactions");
+
+      try {
+        onValue(interactionsRef, (snapshot) => {
+          const data = snapshot.val();
+          setInteractionData(data || {});
+        });
+      } catch (error) {
+        console.error("Error fetching interaction data:", error);
+      }
+    };
+
+    fetchInteractionData();
+  }, []);
+  
   const fetchCommentsForPost = async (postId) => {
+
+    
+  
     const database = getDatabase();
     const commentsRef = ref(database, "comments");
 
@@ -35,6 +59,51 @@ const Posts = ({ posts, loading }) => {
       console.error("Error fetching comments:", error);
     }
   };
+
+  const handleLike = (postId) => {
+    const database = getDatabase();
+    const interactionsRef = ref(database, "interactions");
+
+    try {
+      const postInteractionRef = child(interactionsRef, postId);
+      const currentLikes = interactionData[postId]?.likes || 0;
+      const currentComments = interactionData[postId]?.comments || 0;
+      const userHasLiked = interactionData[postId]?.likedByUser || false;
+
+      if (userHasLiked) {
+        set(postInteractionRef, {
+          likes: currentLikes - 1,
+          comments: currentComments,
+          likedByUser: false,
+        });
+        setInteractionData((prevData) => ({
+          ...prevData,
+          [postId]: {
+            ...prevData[postId],
+            likes: currentLikes - 1,
+            likedByUser: false,
+          },
+        }));
+      } else {
+        set(postInteractionRef, {
+          likes: currentLikes + 1,
+          comments: currentComments,
+          likedByUser: true,
+        });
+        setInteractionData((prevData) => ({
+          ...prevData,
+          [postId]: {
+            ...prevData[postId],
+            likes: currentLikes + 1,
+            likedByUser: true,
+          },
+        }));
+      }
+    } catch (error) {
+      console.error("Error updating like count:", error);
+    }
+  };
+
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
@@ -70,6 +139,12 @@ const Posts = ({ posts, loading }) => {
                   <p className="post-timestamp">
                     {new Date(post.timestamp).toLocaleString()}
                   </p>
+
+                  <div className="interaction-buttons">
+                    <button onClick={() => handleLike(post.id)}>
+                      Like ({interactionData[post.id]?.likes || 0})
+                    </button>
+                </div>
                 </div>
               </div>
             ))}
