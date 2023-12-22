@@ -154,12 +154,13 @@ const Posts = ({ posts, loading }) => {
 
       
       fetchCommentsForPost(selectedPostForComment);
-
+const timestamp=Date.now();
       const commentsRef = ref(database, "comments");
       const newCommentKey = push(commentsRef).key;
       await set(child(commentsRef, newCommentKey), {
         postId: selectedPostForComment,
         text: commentText,
+        timestamp:timestamp,
       });
       
 
@@ -179,6 +180,24 @@ const Posts = ({ posts, loading }) => {
     
     Act((prevCounter) => (prevCounter === 0 ? 1 : 0));
     }
+    function getTimeElapsed(commentTime) {
+      var now = new Date();
+      var currentTime = now.getTime();
+      var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
+
+      if (secondsElapsed < 60) {
+          return secondsElapsed + " sec";
+      } else {
+          var minutesElapsed = Math.floor(secondsElapsed / 60);
+          if (minutesElapsed < 60) {
+              return minutesElapsed + " min";
+          } else {
+              var hoursElapsed = Math.floor(minutesElapsed / 60);
+              return hoursElapsed + " hour";
+          }
+      }
+  }
+
     return(
     <div>
         <button className="likeComment"  onClick={handleLikeClick}  > Like  {Counter > 0 &&( Counter) }  </button>
@@ -189,6 +208,28 @@ const Posts = ({ posts, loading }) => {
     
     }
   
+ 
+
+
+
+    function getTimeElapsed(commentTime) {
+      var now = new Date();
+      var currentTime = now.getTime();
+      var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
+
+      if (secondsElapsed < 60) {
+          return secondsElapsed + " sec";
+      } else {
+          var minutesElapsed = Math.floor(secondsElapsed / 60);
+          if (minutesElapsed < 60) {
+              return minutesElapsed + " min";
+          } else {
+              var hoursElapsed = Math.floor(minutesElapsed / 60);
+              return hoursElapsed + " hour";
+          }
+      }
+  }
+    
   return (
     <div>
       <h2>Posts</h2>
@@ -236,6 +277,7 @@ const Posts = ({ posts, loading }) => {
                           placeholder="Add a comment ..."
                           value={commentText}
                           onChange={(e) => setCommentText(e.target.value)}
+                          
                         />
                         <button onClick={handleCommentSubmit} className="commentButton">
                           Submit Comment
@@ -246,14 +288,17 @@ const Posts = ({ posts, loading }) => {
     {comments[post.id]?.map((comment) => (
      
         <div key={comment.id} className="comment-container">
+          <div className="commentarea">
             <img className="userphoto" src="1.jpg" alt="User Photo" />
            
                     <p className="user-name">abdallah</p>
-                    
-                 <p className="commentText"> <strong>{comment.text}</strong> </p>
-                <Like />
+                    <div className="timing">  {getTimeElapsed(comment.timestamp)}  </div>
 
+                 <p className="commentText"> <strong>{comment.text}</strong> </p>
+                </div>
+               <Like />
             </div>
+            
         
     ))}
 
