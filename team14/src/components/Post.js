@@ -1,6 +1,7 @@
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import {
   getDatabase,
   ref,
@@ -11,11 +12,23 @@ import {
   get,
 } from "firebase/database";
 
+
+
+
+
 const Posts = ({ posts, loading }) => {
+
   const [interactionData, setInteractionData] = useState({});
   const [commentText, setCommentText] = useState("");
   const [selectedPostForComment, setSelectedPostForComment] = useState(null);
   const [comments, setComments] = useState({});
+
+  
+  
+  var likeSection = document.createElement("div");
+  
+  
+
 
   const [replyText, setReplyText] = useState("");
   const [selectedCommentForReply, setSelectedCommentForReply] = useState(null);
@@ -121,12 +134,17 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
+  
+
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
     fetchCommentsForPost(postId);
   };
 
+
+
+  
   const handleCommentSubmit = async () => {
     try {
       const database = getDatabase();
@@ -142,6 +160,10 @@ const Posts = ({ posts, loading }) => {
         likes: currentLikes,
       });
 
+
+
+
+      
       setInteractionData((prevData) => ({
         ...prevData,
         [selectedPostForComment]: {
@@ -150,21 +172,167 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
+      
+
+      
+      fetchCommentsForPost(selectedPostForComment);
+const timestamp=Date.now();
+      const commentsRef = ref(database, "comments");
+
       fetchCommentsForPost(selectedPostForComment);
 
       const commentsRef = ref(database, `comments/${selectedPostForComment}`);
+
       const newCommentKey = push(commentsRef).key;
       await set(child(commentsRef, newCommentKey), {
         id: newCommentKey,
         text: commentText,
+        timestamp:timestamp,
       });
+      
 
       setCommentText("");
       setSelectedPostForComment(null);
     } catch (error) {
       console.error("Error submitting comment:", error);
     }
+    
+ 
   };
+
+  
+  const Like=()=>{
+    const [Counter,Act] = useState(0);
+    
+    const handleLikeClick=()=> {
+    
+    Act((prevCounter) => (prevCounter === 0 ? 1 : 0));
+    }
+    function getTimeElapsed(commentTime) {
+      var now = new Date();
+      var currentTime = now.getTime();
+      var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
+
+      if (secondsElapsed < 60) {
+          return secondsElapsed + " sec";
+      } else {
+          var minutesElapsed = Math.floor(secondsElapsed / 60);
+          if (minutesElapsed < 60) {
+              return minutesElapsed + " min";
+          } else {
+              var hoursElapsed = Math.floor(minutesElapsed / 60);
+              return hoursElapsed + " hour";
+          }
+      }
+  }
+
+    return(
+    <div>
+        <button className="likeComment"  onClick={handleLikeClick}  > Like  {Counter > 0 &&( Counter) }  </button>
+    
+    </div>
+    )
+    
+    
+    }
+  
+ 
+
+
+
+    function getTimeElapsed(commentTime) {
+      var now = new Date();
+      var currentTime = now.getTime();
+      var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
+
+      if (secondsElapsed < 60) {
+          return secondsElapsed + " sec";
+      } else {
+          var minutesElapsed = Math.floor(secondsElapsed / 60);
+          if (minutesElapsed < 60) {
+              return minutesElapsed + " min";
+          } else {
+              var hoursElapsed = Math.floor(minutesElapsed / 60);
+              return hoursElapsed + " hour";
+          }
+      }
+  }
+    
+  return (
+    <div>
+      <h2>Posts</h2>
+      {loading && <p>Loading posts...</p>}
+      {!loading && posts.length === 0 && <p>No posts available.</p>}
+      {!loading && posts.length > 0 && (
+        <div>
+          {posts
+            .sort((a, b) => b.timestamp - a.timestamp)
+            .map((post) => (
+              <div className="post-card" key={post.id}>
+                <div className="profile-info">
+                  <img
+                    alt="User profile picture"
+                    className="profile-picture"
+                    height={40}
+                    src={post.isMyPost ? logo : post.profilePicture}
+                    width={40}
+                  />
+                  <strong className="profile-name">{post.profilename}</strong>
+                </div>
+                <div className="post-content">
+                  <strong>{post.text}</strong>
+                  {post.photo && (
+                    <img alt="Post" className="post-photo" src={post.photo} />
+                  )}
+
+                  <p className="post-timestamp">
+                    {new Date(post.timestamp).toLocaleString()}
+                  </p>
+
+                  <div className="interaction-buttons">
+                    <button onClick={() => handleLike(post.id)}>
+                      Like ({interactionData[post.id]?.likes || 0})
+                    </button>
+
+                    <button onClick={() => handleComment(post.id)}>
+                      Comment ({interactionData[post.id]?.comments || 0})
+                    </button>
+                    {selectedPostForComment === post.id && (
+                      <>
+                        <textarea
+                    
+                        className="commentcss"
+                          placeholder="Add a comment ..."
+                          value={commentText}
+                          onChange={(e) => setCommentText(e.target.value)}
+                          
+                        />
+                        <button onClick={handleCommentSubmit} className="commentButton">
+                          Submit Comment
+                        </button>
+                      </>
+                    )}
+
+    {comments[post.id]?.map((comment) => (
+     
+        <div key={comment.id} className="comment-container">
+          <div className="commentarea">
+            <img className="userphoto" src="1.jpg" alt="User Photo" />
+           
+                    <p className="user-name">abdallah</p>
+                    <div className="timing">  {getTimeElapsed(comment.timestamp)}  </div>
+
+                 <p className="commentText"> <strong>{comment.text}</strong> </p>
+                </div>
+               <Like />
+            </div>
+            
+        
+    ))}
+
+
+                </div>
+
 
   /////////////////////////////////////////////////////////////////////////////////   { Reply Function }    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -443,6 +611,7 @@ const Posts = ({ posts, loading }) => {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -453,5 +622,4 @@ const Posts = ({ posts, loading }) => {
   
   );
 };
-
 export default Posts;
