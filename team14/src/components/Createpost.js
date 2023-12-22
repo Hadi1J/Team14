@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
-import { database } from "../firebase"; 
-import "./Createpost.css"; 
+import { database } from "../firebase";
+import "./Createpost.css";
 import logo from "./03.jpg";
-
 const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const staticProfileName = "Ahmed sheqo";
@@ -12,8 +11,8 @@ const CreatePost = () => {
     const postData = {
       text: postText,
       timestamp: Date.now(),
-      isMyPost: true, 
-      profilePicture: logo, 
+      isMyPost: true,
+      profilePicture: logo,
       profilename: staticProfileName,
     };
     const postsRef = ref(database, "posts");
@@ -21,17 +20,13 @@ const CreatePost = () => {
     try {
       await set(newPostRef, postData);
       console.log("Post created successfully!");
-      setPostText(""); 
+      setPostText("");
     } catch (error) {
       console.error("Error creating post:", error);
     }
   };
   return (
-
     <div className="container big">
-
-    <div className="container">
-
       <div className="post-box d-flex flex-column">
         <div className="d-flex align-items-center">
           <img
@@ -98,11 +93,6 @@ const CreatePost = () => {
             <i className="fas fa-smile"></i>
             Feeling / Activity
           </button>
-
-
-        </div>
-        <div className="sharepost">
-
           <button
             type="submit"
             onClick={handlePostSubmit}
@@ -112,7 +102,6 @@ const CreatePost = () => {
             POST
           </button>
         </div>
-
       </div>
     </div>
   );
