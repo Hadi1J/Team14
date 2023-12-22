@@ -1,8 +1,14 @@
 .post-card {
+
+    border: 1px solid #ccc;
+    
+   
+
   margin: 0.625rem 0;
   padding: 0.625rem;
   justify-content: center;
   border-radius: 0.313rem;
+
 }
 
 .profile-info {
@@ -27,11 +33,119 @@
   margin-top: 0.652rem;
 }
 
+.commentText{
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
+/*.comment-container {
+    width: 33%;
+    background-color: rgb(204, 198, 198);
+  border-radius: 15px;
+    border-radius:0.188rem;
+    margin: auto;
+    min-width: 350px;
+    margin-bottom:0.652rem;
+    padding:0.75rem; 
+  
+    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+}*/
+.commentarea{
+    width: 33%;
+    height: fit-content;
+    background-color: lightgray;
+  border-radius: 15px;
+    margin: auto;
+    min-width: 350px;
+    margin-bottom:0.652rem;
+    padding:0.75rem; 
+  
+    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+}
+
+.commentText{
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.commentcss{
+    width: 38.33%;
+    margin: auto;
+    max-width: 100%;
+    resize: vertical;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin: auto;
+
+}
+
+  
+  
+
+.user-name{
+    font-weight: bold;
+     display: inline-block;
+     align-items: center;
+position: relative;
+top: -3rem;
+left: 0.3rem;
+}
+
+.userphoto{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    right: 3.5rem;
+    bottom: 0.6rem;
+  
+
+}
+.commentButton{
+    margin-left: 33.5%;
+    position: relative;
+    left: 9.5rem;
+    bottom: 2rem; ;
+}
+.timing{
+    display: flex;
+    font-size: small;
+    color: gray;
+    position: relative;
+    top: -4rem;
+    left: 1rem;
+}
+
+
+.commentText{
+    position: relative;
+margin-left: 15px;
+bottom: 3rem;
+}
+
+
+
 .interaction-buttons {
   margin-top: 10px;
 }
 
 button {
+
+    background-color: transparent;
+    
+    
+
+
+    position: relative;
+    
+
+
   margin-right: 0.652rem;
   padding: 0.313rem 0.652rem;
   cursor: pointer;
@@ -40,8 +154,294 @@ button {
   border: none;
   border-radius: 0.25rem;
 }
+.likeComment{
+    background-color: transparent;
+    color:gray;
+    border-radius: 15px;
+    display: inline-block;
+   position: relative;
+  left: 31%;
+  top: -0.75rem;
+
+
 
 button:hover {
+
+    background-color: #2980b9;
+}
+
+
+#replybutton{
+    position: relative;
+     
+
+
+    margin-left: 5px ;
+    
+    background-color: rgb(241, 240, 240);
+    color: gray;
+    border: none;
+
+}
+
+#replybutton:hover{
+
+   color:rgb(161, 161, 236) ;
+}
+
+#LoadMoreB{
+    position: relative;
+    border: none;
+    background-color: white;
+    color: grey;
+    left: 150px;
+    
+    }
+    
+    
+    #LoadMoreB:hover{
+    
+        color: rgb(122, 122, 221);
+    }
+
+
+    .ReplySection1
+    {
+
+        position: fixed;
+       
+        display: flex;
+          flex-direction: column;
+        float: left;
+
+    }
+
+    .RepliedSection
+    {
+
+        position: relative;
+        top:300px;
+        display: flex;
+          flex-direction: column;
+        
+
+
+    }
+
+
+    #LoadMore
+    {
+
+
+position: absolute;
+    }
+
+    #textt{
+
+  display: flex;
+        padding: 10px;
+        font-size: 15px;
+        border: none;
+        background-color: lightgray;
+        color: rgb(8, 8, 8);
+        height: 50px;
+        outline: none;
+        width: 90%;
+  display: inline-block;
+          margin-left: 20px ;
+          margin-top: 10px;
+          resize: none;
+          
+  }
+  
+  .Replyy{
+ 
+ display: flex;
+ height: 120px;
+  width: 33%;
+  background-color: lightgray;
+border-radius: 15px;
+  
+  margin: auto;
+  min-width: 350px;
+  margin-bottom:0.652rem;
+  padding:0.75rem; 
+  
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+  
+
+  }
+  
+
+  .PostedReplyy{
+  
+
+
+width: 33%;
+  background-color: lightgray;
+border-radius: 15px;
+  height: 20%;
+  margin: auto;
+  min-width: 350px;
+  margin-bottom:2.5rem;
+  padding:0.75rem; 
+  
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+padding-bottom: -4rem;
+padding-top: -2rem;
+  }
+  
+  .content{
+
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 100%;
+    
+  }
+  .PIC
+  {
+  float: left;
+      margin-left: 10px;
+      margin-top: 10px;
+     width: 40px;
+  
+  }
+  
+  .POST{
+  overflow-wrap: break-word;
+  float: right;
+  margin-right: 10px;
+  color: grey;
+  border: none;
+  background-color: lightgray;
+  border-radius: 15px;
+  border:none;
+  margin-top: 20px;
+  }
+  .POST:hover{
+  
+      color: rgb(58, 189, 233);
+  }
+  
+  
+  
+  
+  #Reactions1{
+  
+      position: fixed;
+  
+     top: 140px;
+  
+  }
+
+  #like{
+
+    background-color: transparent;
+    color:gray;
+    border-radius: 15px;
+   position: relative;
+   left: 5%;
+    margin-top: 0rem;
+    bottom: -4rem;
+  }
+
+
+  #REPLY{
+
+    background-color: transparent;
+    color:gray;
+    border-radius: 15px;
+    display: inline-block;
+    position: relative;
+    left: 20%;
+    bottom: -1.9rem;
+
+  }
+
+
+ 
+
+ 
+ 
+
+
+  #REPLY:hover{ color: rgb(61, 176, 214);  }
+  #like:hover{ color: rgb(61, 176, 214);  }
+
+  .post-comments{
+
+position: relative;
+
+
+top: 10px;
+
+  }
+
+  .comment1{
+
+    position: relative;
+left: 20px;
+
+
+  }
+
+  #TimeE{
+    
+
+display: flex;
+font-size: small;
+color: gray;
+
+  }
+
+  .reply-card{
+
+
+    position: relative;
+    top: 40px;
+    left: 70px;
+
+  }
+
+
+  #ProfileReply{
+
+margin-left: 10px;
+margin-bottom:40px;
+height: 10%;
+margin-bottom: 5rem;
+margin-top: -2rem;
+  }
+ 
+
+  .ProfilePic{
+    display: flex;
+    position: relative;
+    right: 3.5rem;
+    display: flex;
+  width: 10px;
+  }
+
+#Activity{
+
+  margin-top: -5rem;
+  margin-bottom: -1rem;
+ 
+  
+}
+  .DisplayforText{
+
+height: 20%;
+margin-top: -3rem;
+padding-bottom: 20px;
+overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 100%;
+    margin-left: 0.25rem;
+  }
+  
+=======
   background-color: #2980B9;
 }
 
@@ -206,4 +606,20 @@ body {
 
 .social-buttons span i {
   padding-right: 0.25rem;
+}
+
+.interaction-buttons button{
+    background: transparent;
+    color: #676a79;
+}
+.interaction-buttons button:hover, .interaction-buttons button:focus {
+    color: #0c59bd;
+}
+.interaction-buttons .bi-chat-fill, .interaction-buttons .bi-hand-thumbs-up-fill{
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    vertical-align: -0.125em;
+
 }
