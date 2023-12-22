@@ -1,4 +1,11 @@
+import PostManager from "./components/PostManager";
+
 function App() {
-  return <div></div>;
+  return (
+    <div className="App">
+      <PostManager/>
+    </div>
+  );
 }
+
 export default App;
