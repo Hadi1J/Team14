@@ -27,7 +27,11 @@ const CreatePost = () => {
     }
   };
   return (
+
     <div className="container big">
+
+    <div className="container">
+
       <div className="post-box d-flex flex-column">
         <div className="d-flex align-items-center">
           <img
@@ -94,6 +98,11 @@ const CreatePost = () => {
             <i className="fas fa-smile"></i>
             Feeling / Activity
           </button>
+
+
+        </div>
+        <div className="sharepost">
+
           <button
             type="submit"
             onClick={handlePostSubmit}
@@ -103,7 +112,7 @@ const CreatePost = () => {
             POST
           </button>
         </div>
-    
+
       </div>
     </div>
   );
