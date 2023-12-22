@@ -1,6 +1,4 @@
 
-import "./post.css";
-import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
 import {
   getDatabase,
@@ -11,39 +9,17 @@ import {
   child,
   get,
 } from "firebase/database";
+import "./post.css";
+import logo from "./03.jpg";
 
-const Posts = ({ posts, loading }) => { 
-  const [interactionData, setInteractionData] = useState({});
-
+const Posts = ({ posts, loading }) => {
   const [commentText, setCommentText] = useState("");
   const [selectedPostForComment, setSelectedPostForComment] = useState(null);
   const [comments, setComments] = useState({});
-  
-  useEffect(() => {
-    const fetchInteractionData = async () => {
-      const database = getDatabase();
-      const interactionsRef = ref(database, "interactions");
 
-      try {
-        onValue(interactionsRef, (snapshot) => {
-          const data = snapshot.val();
-          setInteractionData(data || {});
-        });
-      } catch (error) {
-        console.error("Error fetching interaction data:", error);
-      }
-    };
-
-    fetchInteractionData();
-  }, []);
-  
   const fetchCommentsForPost = async (postId) => {
-
-    
-  
     const database = getDatabase();
     const commentsRef = ref(database, "comments");
-
     try {
       const snapshot = await get(commentsRef);
       const data = snapshot.val();
@@ -60,98 +36,33 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
-  const handleLike = (postId) => {
-    const database = getDatabase();
-    const interactionsRef = ref(database, "interactions");
-
-    try {
-      const postInteractionRef = child(interactionsRef, postId);
-      const currentLikes = interactionData[postId]?.likes || 0;
-      const currentComments = interactionData[postId]?.comments || 0;
-      const userHasLiked = interactionData[postId]?.likedByUser || false;
-
-      if (userHasLiked) {
-        set(postInteractionRef, {
-          likes: currentLikes - 1,
-          comments: currentComments,
-          likedByUser: false,
-        });
-        setInteractionData((prevData) => ({
-          ...prevData,
-          [postId]: {
-            ...prevData[postId],
-            likes: currentLikes - 1,
-            likedByUser: false,
-          },
-        }));
-      } else {
-        set(postInteractionRef, {
-          likes: currentLikes + 1,
-          comments: currentComments,
-          likedByUser: true,
-        });
-        setInteractionData((prevData) => ({
-          ...prevData,
-          [postId]: {
-            ...prevData[postId],
-            likes: currentLikes + 1,
-            likedByUser: true,
-          },
-        }));
-      }
-    } catch (error) {
-      console.error("Error updating like count:", error);
-    }
-  };
-
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
     fetchCommentsForPost(postId);
   };
 
-  const handleCommentSubmit = async () => {
-    try {
-      const database = getDatabase();
-      const interactionsRef = ref(database, "interactions");
-      const postInteractionRef = child(interactionsRef, selectedPostForComment);
+  function getTimeElapsed(postTime) {
+    var now = new Date();
+    var currentTime = now.getTime();
+    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
 
-      const currentComments =
-        interactionData[selectedPostForComment]?.comments || 0;
-      const currentLikes = interactionData[selectedPostForComment]?.likes || 0;
-
-      await set(postInteractionRef, {
-        comments: currentComments + 1,
-        likes: currentLikes,
-      });
-
-      setInteractionData((prevData) => ({
-        ...prevData,
-        [selectedPostForComment]: {
-          ...prevData[selectedPostForComment],
-          comments: currentComments + 1,
-        },
-      }));
-
-      // Fetch comments again after submitting a new comment
-      fetchCommentsForPost(selectedPostForComment);
-
-      const commentsRef = ref(database, "comments");
-      const newCommentKey = push(commentsRef).key;
-      await set(child(commentsRef, newCommentKey), {
-        postId: selectedPostForComment,
-        text: commentText,
-      });
-
-      setCommentText("");
-      setSelectedPostForComment(null);
-    } catch (error) {
-      console.error("Error submitting comment:", error);
+    if (secondsElapsed < 60) {
+        return secondsElapsed + " sec";
+    } else {
+        var minutesElapsed = Math.floor(secondsElapsed / 60);
+        if (minutesElapsed < 60) {
+            return minutesElapsed + " min";
+        } else {
+            var hoursElapsed = Math.floor(minutesElapsed / 60);
+            return hoursElapsed + " hour";
+        }
     }
-  };
+}
+
+
   return (
     <div>
-      <h2>Posts</h2>
       {loading && <p>Loading posts...</p>}
       {!loading && posts.length === 0 && <p>No posts available.</p>}
       {!loading && posts.length > 0 && (
@@ -160,55 +71,40 @@ const Posts = ({ posts, loading }) => {
             .sort((a, b) => b.timestamp - a.timestamp)
             .map((post) => (
               <div className="post-card" key={post.id}>
-                <div className="profile-info">
-                  <img
-                    alt="User profile picture"
-                    className="profile-picture"
-                    height={40}
-                    src={post.isMyPost ? logo : post.profilePicture}
-                    width={40}
-                  />
-                  <strong className="profile-name">{post.profilename}</strong>
-                </div>
-                <div className="post-content">
-                  <strong>{post.text}</strong>
-                  {post.photo && (
-                    <img alt="Post" className="post-photo" src={post.photo} />
-                  )}
-
-                  <p className="post-timestamp">
-                    {new Date(post.timestamp).toLocaleString()}
-                  </p>
-
-                  <div className="interaction-buttons">
-                    <button onClick={() => handleLike(post.id)}>
-                      Like ({interactionData[post.id]?.likes || 0})
-                    </button>
-
-                    <button onClick={() => handleComment(post.id)}>
-                      Comment ({interactionData[post.id]?.comments || 0})
-                    </button>
-                    {selectedPostForComment === post.id && (
-                      <>
-                        <textarea
-                          placeholder="Type your comment..."
-                          value={commentText}
-                          onChange={(e) => setCommentText(e.target.value)}
-                        />
-                        <button onClick={handleCommentSubmit}>
-                          Submit Comment
-                        </button>
-                      </>
-                    )}
-
-<div className="post-comments">
-                      {comments[post.id]?.map((comment) => (
-                        <div key={comment.id} className="comment">
-                          <strong>{comment.text}</strong>
-                        </div>
-                      ))}
+    
+                <div className="f-card">
+                  <div className="header">
+                    <img
+                      className="co-logo"
+                      src={post.isMyPost ? logo : post.profilePicture}
+                    />
+                    <div className="co-name">
+                      <a href="#">{post.profilename}</a>
                     </div>
-                </div>
+                    <div className="time">
+                      <a href="#">
+                        {getTimeElapsed(post.timestamp)}
+                      </a>{" "}
+                      · <i className="fa fa-globe" />
+                    </div>
+                  </div>
+                  <div className="content">
+                    <p>{post.text}</p>
+                    {post.photo && (
+                    <img alt="Post" className="post-photo" src={post.photo} />)}
+                  </div>
+                  <div className="social">
+                    <div className="social-content" />
+                    <div className="social-buttons">
+                      <span>
+                        <i className="fa fa-thumbs-up" />Like
+                      </span>
+                      <span onClick={() => handleComment(post.id)}>
+                        <i className="fa fa-comment" />Comment
+                      </span>
+
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -219,3 +115,4 @@ const Posts = ({ posts, loading }) => {
 };
 
 export default Posts;
+

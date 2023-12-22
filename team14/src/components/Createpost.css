@@ -7,32 +7,36 @@ body {
 }
 .big{
     display: flex; 
-    
-    justify-content: center;
+   justify-content: center;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
+    width: 100%;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+
 
 }
 .post-box {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 500px;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    margin: 1.25rem auto;
+    max-width: 31.25rem;
+    
 }
 .post-box .user-image {
-    width: 40px;
-    height: 40px;
+    width:2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 .post-input {
     border: none;
     box-shadow: none;
-    margin-left: 10px;
-    font-size: 16px;
+    margin-left: 0.625rem;
+    font-size: 1rem;
 }
 .post-input::placeholder {
     color: #606770;
@@ -47,21 +51,21 @@ body {
 }
 .action-buttons .btn {
     
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #606770;
     background-color: #F0F2F5;
     border: none;
-   /* margin-right: 10px;*/
-   padding: 9px;
+
+   padding: 7px;
    height: fit-content;
 }
 
 .action-buttons .btn i {
-    margin-right: 5px;
+    margin-right: 0.313rem;
 }
 .more-options {
     color: #606770;
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
     
 }
@@ -81,32 +85,32 @@ color:rgba(12,188,135);
 
 }
 .sharepost .btn-lg{
-font-size: 10px; 
+font-size: 0.625rem; 
 font-weight: bold;
 text-align: center;
-padding-right: 44PX;
-width:30px;
-height: 30px;
+padding-right: 2.75rem;
+width:1.875rem;
+height:1.875rem;
 
 }
 .sharepost{
-    padding-left: 405px;
+    padding-left: 25.313rem;
 }
 .post-button {
     border: 0px;
     border-radius: 0.4em;
-    padding: 9px;
+    padding: 7px;
     text-transform: capitalize;
 }
 .post-button:disabled {
     cursor: not-allowed;
-    color: #0cbc87;
+    color:rgba(var(--bs-info-rgb));
     background-color: rgba(12, 188, 135, 0.1);
 }
 .post-button:not(:disabled) {
     color: #fff !important;
-    background-color: #0cbc87 !important;
-    border-color: #0cbc87 !important;
+    background-color:rgba(var(--bs-info-rgb))!important;
+    border-color: rgba(var(--bs-info-rgb)) !important;
     cursor: pointer;
 }
 
@@ -114,3 +118,15 @@ height: 30px;
     --bs-bg-opacity: 1;
     background-color: rgba(238, 240, 242, var(--bs-bg-opacity)) !important;
 }
+@media only screen and (min-width: 768px) {
+    .post-card .f-card {
+        width: 33%;
+    }
+}
+
+@media (max-width: 767px) {
+  .post-card .f-card {
+    width: 100%;
+  }
+}
+
