@@ -207,3 +207,18 @@ body {
 .social-buttons span i {
   padding-right: 0.25rem;
 }
+
+.interaction-buttons button{
+    background: transparent;
+    color: #676a79;
+}
+.interaction-buttons button:hover, .interaction-buttons button:focus {
+    color: #0c59bd;
+}
+.interaction-buttons .bi-chat-fill, .interaction-buttons .bi-hand-thumbs-up-fill{
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    vertical-align: -0.125em;
+}
