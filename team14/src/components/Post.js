@@ -1,4 +1,3 @@
-
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
@@ -12,13 +11,13 @@ import {
   get,
 } from "firebase/database";
 
-const Posts = ({ posts, loading }) => { 
+const Posts = ({ posts, loading }) => {
   const [interactionData, setInteractionData] = useState({});
 
   const [commentText, setCommentText] = useState("");
   const [selectedPostForComment, setSelectedPostForComment] = useState(null);
   const [comments, setComments] = useState({});
-  
+
   useEffect(() => {
     const fetchInteractionData = async () => {
       const database = getDatabase();
@@ -36,11 +35,8 @@ const Posts = ({ posts, loading }) => {
 
     fetchInteractionData();
   }, []);
-  
-  const fetchCommentsForPost = async (postId) => {
 
-    
-  
+  const fetchCommentsForPost = async (postId) => {
     const database = getDatabase();
     const commentsRef = ref(database, "comments");
 
@@ -109,6 +105,46 @@ const Posts = ({ posts, loading }) => {
     setCommentText("");
     fetchCommentsForPost(postId);
   };
+
+  const handleCommentSubmit = async () => {
+    try {
+      const database = getDatabase();
+      const interactionsRef = ref(database, "interactions");
+      const postInteractionRef = child(interactionsRef, selectedPostForComment);
+
+      const currentComments =
+        interactionData[selectedPostForComment]?.comments || 0;
+      const currentLikes = interactionData[selectedPostForComment]?.likes || 0;
+
+      await set(postInteractionRef, {
+        comments: currentComments + 1,
+        likes: currentLikes,
+      });
+
+      setInteractionData((prevData) => ({
+        ...prevData,
+        [selectedPostForComment]: {
+          ...prevData[selectedPostForComment],
+          comments: currentComments + 1,
+        },
+      }));
+
+      // Fetch comments again after submitting a new comment
+      fetchCommentsForPost(selectedPostForComment);
+
+      const commentsRef = ref(database, "comments");
+      const newCommentKey = push(commentsRef).key;
+      await set(child(commentsRef, newCommentKey), {
+        postId: selectedPostForComment,
+        text: commentText,
+      });
+
+      setCommentText("");
+      setSelectedPostForComment(null);
+    } catch (error) {
+      console.error("Error submitting comment:", error);
+    }
+  };
   return (
     <div>
       <h2>Posts</h2>
@@ -144,7 +180,31 @@ const Posts = ({ posts, loading }) => {
                     <button onClick={() => handleLike(post.id)}>
                       Like ({interactionData[post.id]?.likes || 0})
                     </button>
-                </div>
+
+                    <button onClick={() => handleComment(post.id)}>
+                      Comment ({interactionData[post.id]?.comments || 0})
+                    </button>
+                    {selectedPostForComment === post.id && (
+                      <>
+                        <textarea
+                          placeholder="Type your comment..."
+                          value={commentText}
+                          onChange={(e) => setCommentText(e.target.value)}
+                        />
+                        <button onClick={handleCommentSubmit}>
+                          Submit Comment
+                        </button>
+                      </>
+                    )}
+
+                    <div className="post-comments">
+                      {comments[post.id]?.map((comment) => (
+                        <div key={comment.id} className="comment">
+                          <strong>{comment.text}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
