@@ -2,6 +2,7 @@
     border: 1px solid #ccc;
     margin: 10px 0;
     padding: 10px;
+    border-radius: 5px ;
 }
 
 .profile-info {
@@ -26,6 +27,89 @@
     margin-top: 10px;
 }
 
+.commentText{
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
+.comment-container {
+    width: 33%;
+  background-color: lightgray;
+border-radius: 15px;
+  margin: auto;
+  min-width: 350px;
+  margin-bottom:0.652rem;
+  padding:0.75rem; 
+
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+}
+
+.commentText{
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.commentcss{
+    width: 33%;
+    margin: auto;
+    max-width: 100%;
+    resize: vertical;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin: auto;
+
+}
+
+  
+  
+
+.user-name{
+    font-weight: bold;
+     display: inline-block;
+     align-items: center;
+position: relative;
+top: -2rem;
+left: 0.4rem;
+}
+
+.userphoto{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    right: 3.5rem;
+  
+
+}
+
+
+.commentText{
+    
+margin-left: 15px;
+}
+
+
+
+
+.likeComment{
+    background-color: transparent;
+    color:gray;
+    border-radius: 15px;
+    display: inline-block;
+   position: relative;
+  left: 5%;
+}
+
+
+
+
+
 .interaction-buttons {
     margin-top: 10px;
 }
@@ -40,6 +124,3 @@ button {
     border-radius: 4px;
 }
 
-button:hover {
-    background-color: #2980b9;
-}

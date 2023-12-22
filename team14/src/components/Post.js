@@ -1,7 +1,7 @@
-
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import {
   getDatabase,
   ref,
@@ -12,6 +12,8 @@ import {
   get,
 } from "firebase/database";
 
+
+
 const Posts = ({ posts, loading }) => { 
   const [interactionData, setInteractionData] = useState({});
 
@@ -19,6 +21,12 @@ const Posts = ({ posts, loading }) => {
   const [selectedPostForComment, setSelectedPostForComment] = useState(null);
   const [comments, setComments] = useState({});
   
+  
+  var likeSection = document.createElement("div");
+  
+  
+
+
   useEffect(() => {
     const fetchInteractionData = async () => {
       const database = getDatabase();
@@ -104,12 +112,17 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
+  
+
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
     fetchCommentsForPost(postId);
   };
 
+
+
+  
   const handleCommentSubmit = async () => {
     try {
       const database = getDatabase();
@@ -125,6 +138,10 @@ const Posts = ({ posts, loading }) => {
         likes: currentLikes,
       });
 
+
+
+
+      
       setInteractionData((prevData) => ({
         ...prevData,
         [selectedPostForComment]: {
@@ -133,7 +150,9 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
-      // Fetch comments again after submitting a new comment
+      
+
+      
       fetchCommentsForPost(selectedPostForComment);
 
       const commentsRef = ref(database, "comments");
@@ -142,13 +161,34 @@ const Posts = ({ posts, loading }) => {
         postId: selectedPostForComment,
         text: commentText,
       });
+      
 
       setCommentText("");
       setSelectedPostForComment(null);
     } catch (error) {
       console.error("Error submitting comment:", error);
     }
+    
+ 
   };
+  
+  const Like=()=>{
+    const [Counter,Act] = useState(0);
+    
+    const handleLikeClick=()=> {
+    
+    Act((prevCounter) => (prevCounter === 0 ? 1 : 0));
+    }
+    return(
+    <div>
+        <button className="likeComment"  onClick={handleLikeClick}  > Like  {Counter > 0 &&( Counter) }  </button>
+    
+    </div>
+    )
+    
+    
+    }
+  
   return (
     <div>
       <h2>Posts</h2>
@@ -191,23 +231,33 @@ const Posts = ({ posts, loading }) => {
                     {selectedPostForComment === post.id && (
                       <>
                         <textarea
-                          placeholder="Type your comment..."
+                    
+                        className="commentcss"
+                          placeholder="Add a comment ..."
                           value={commentText}
                           onChange={(e) => setCommentText(e.target.value)}
                         />
-                        <button onClick={handleCommentSubmit}>
+                        <button onClick={handleCommentSubmit} className="commentButton">
                           Submit Comment
                         </button>
                       </>
                     )}
 
-<div className="post-comments">
-                      {comments[post.id]?.map((comment) => (
-                        <div key={comment.id} className="comment">
-                          <strong>{comment.text}</strong>
-                        </div>
-                      ))}
-                    </div>
+    {comments[post.id]?.map((comment) => (
+     
+        <div key={comment.id} className="comment-container">
+            <img className="userphoto" src="1.jpg" alt="User Photo" />
+           
+                    <p className="user-name">abdallah</p>
+                    
+                 <p className="commentText"> <strong>{comment.text}</strong> </p>
+                <Like />
+
+            </div>
+        
+    ))}
+
+
                 </div>
                 </div>
               </div>
@@ -217,5 +267,4 @@ const Posts = ({ posts, loading }) => {
     </div>
   );
 };
-
 export default Posts;
