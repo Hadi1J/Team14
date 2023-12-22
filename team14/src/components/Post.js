@@ -106,6 +106,23 @@ const Posts = ({ posts, loading }) => {
     fetchCommentsForPost(postId);
   };
 
+  function getTimeElapsed(postTime) {
+    var now = new Date();
+    var currentTime = now.getTime();
+    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+    if (secondsElapsed < 60) {
+      return secondsElapsed + " sec";
+    } else {
+      var minutesElapsed = Math.floor(secondsElapsed / 60);
+      if (minutesElapsed < 60) {
+        return minutesElapsed + " min";
+      } else {
+        var hoursElapsed = Math.floor(minutesElapsed / 60);
+        return hoursElapsed + " hour";
+      }
+    }
+  }
+
   const handleCommentSubmit = async () => {
     try {
       const database = getDatabase();
@@ -196,7 +213,6 @@ const Posts = ({ posts, loading }) => {
                         </button>
                       </>
                     )}
-
                     <div className="post-comments">
                       {comments[post.id]?.map((comment) => (
                         <div key={comment.id} className="comment">
