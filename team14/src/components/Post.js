@@ -143,8 +143,27 @@ const Posts = ({ posts, loading }) => {
   };
 
 
+  function getTimeElapsed(postTime) {
+    var now = new Date();
+    var currentTime = now.getTime();
+    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+    if (secondsElapsed < 60) {
+      return secondsElapsed + " sec";
+    } else {
+      var minutesElapsed = Math.floor(secondsElapsed / 60);
+      if (minutesElapsed < 60) {
+        return minutesElapsed + " min";
+      } else {
+        var hoursElapsed = Math.floor(minutesElapsed / 60);
+        return hoursElapsed + " hour";
+      }
+    }
+  }
 
-  
+
+
+
+
   const handleCommentSubmit = async () => {
     try {
       const database = getDatabase();
@@ -312,6 +331,8 @@ const timestamp=Date.now();
                         </button>
                       </>
                     )}
+
+
 
     {comments[post.id]?.map((comment) => (
      
