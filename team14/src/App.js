@@ -4,11 +4,10 @@ import Group from "./components/Group/Group";
 import About from "./components/About/About";
 import Navbar from "./components/Navbar/Navbar";
 
-
 function App() {
   return (
     <div className="App">
-      
+      <Navbar />
       <div className="main">
         <div className="container">
           <div className="row g-4">

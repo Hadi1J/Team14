@@ -2,10 +2,8 @@ import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-/////{Reply}\\\\
 import Likereply from "./Reply/Likereply";
 import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
-/////////////////
 import {
   getDatabase,
   ref,
@@ -126,13 +124,11 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
- 
-  
   function getTimeElapsed(postTime) {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-  
+
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -177,8 +173,6 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
-      
-
       fetchCommentsForPost(selectedPostForComment);
 
       const timestamp = Date.now();
@@ -199,7 +193,6 @@ const Posts = ({ posts, loading }) => {
       console.error("Error submitting comment:", error);
     }
   };
-
 
   const Like = () => {
     const [Counter, Act] = useState(0);
@@ -333,7 +326,7 @@ const Posts = ({ posts, loading }) => {
                     </div>
                     <div className="content">
                       <div className="post-content">
-                       {post.text}
+                        {post.text}
                         {post.photo && (
                           <img
                             alt="Post"
@@ -509,4 +502,3 @@ const Posts = ({ posts, loading }) => {
 };
 
 export default Posts;
-

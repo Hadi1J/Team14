@@ -78,18 +78,26 @@ function Group() {
           <div className="d-flex justify-content-center justify-content-md-start align-items-center mt-3 ms-lg-auto">
             <button
               type="button"
-              class="btn btn-success "
-              style={{ backgroundColor: "lightblue" }}
+              className="joinedbt"
+              style={{ backgroundColor: "#e6f1fd", margin: "10px" }}
             >
               <i
                 className="bi bi-person-check-fill pe-1"
-                style={{ color: "blue" }}
+                style={{ color: "#4f89ed" }}
               >
                 Joined
               </i>{" "}
             </button>
-            <button className="btn btn-link me-2">
-              <i className="fa-solid fa-plus pe-1"></i> Invite
+            <button
+              type="Button"
+              className="invitebt"
+              style={{ backgroundColor: "#0abc86" }}
+            >
+              <i
+                className="fa-solid fa-plus pe-1"
+                style={{ color: "white" }}
+              ></i>
+              invite
             </button>
             <div className="dropdown">
               <button
