@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      
       <div className="main">
         <div className="container">
           <div className="row g-4">

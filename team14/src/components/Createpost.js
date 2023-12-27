@@ -39,7 +39,7 @@ const CreatePost = () => {
           />
           <textarea
             className="post-input flex-grow-1"
-            placeholder="Write your post..."
+            placeholder="Share your thoughts..."
             value={postText}
             onChange={(e) => setPostText(e.target.value)}
           />

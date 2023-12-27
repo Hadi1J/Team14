@@ -126,10 +126,13 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
+ 
+  
   function getTimeElapsed(postTime) {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+  
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -174,6 +177,8 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
+      
+
       fetchCommentsForPost(selectedPostForComment);
 
       const timestamp = Date.now();
@@ -185,6 +190,7 @@ const Posts = ({ posts, loading }) => {
         id: newCommentKey,
         text: commentText,
         timestamp: timestamp,
+        timestamp: timestamp,
       });
 
       setCommentText("");
@@ -193,6 +199,7 @@ const Posts = ({ posts, loading }) => {
       console.error("Error submitting comment:", error);
     }
   };
+
 
   const Like = () => {
     const [Counter, Act] = useState(0);
@@ -326,7 +333,7 @@ const Posts = ({ posts, loading }) => {
                     </div>
                     <div className="content">
                       <div className="post-content">
-                        <strong>{post.text}</strong>
+                       {post.text}
                         {post.photo && (
                           <img
                             alt="Post"
@@ -502,3 +509,4 @@ const Posts = ({ posts, loading }) => {
 };
 
 export default Posts;
+

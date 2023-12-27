@@ -1,8 +1,12 @@
 .post-card {
-  /*explainmargin : 0.625rem 0;*/
+
+width:100%;
+  margin: 0.625rem 0;
   padding: 0.625rem;
   justify-content: center;
   border-radius: 0.313rem;
+ margin-top: 20px;
+ 
 }
 
 .profile-info {
@@ -19,6 +23,8 @@
 
 .post-content {
   margin-top: 0.625rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-photo {
@@ -594,4 +600,9 @@ right: 5px;
   font-variant: normal;
   text-transform: none;
   vertical-align: -0.125em;
+}
+
+.post-photo{
+  border-radius:0.4rem;
+  vertical-align: middle;
 }
