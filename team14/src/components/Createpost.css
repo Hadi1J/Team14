@@ -16,7 +16,9 @@ body {
     width: 100%;
     max-width: 1200px;
     /* Adjust the maximum width as needed */
-    margin: 0 auto;
+   /* margin: 0 auto;*/
+    margin-bottom: 25px;
+    
 }
 
 .post-box {
@@ -24,8 +26,10 @@ body {
     border-radius: 0.625rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
     padding: 1.25rem;
-    margin: 1.25rem auto;
-    max-width: 31.25rem;
+    margin: 1.25rem 0px;
+    width: 100%;
+    /*max-width: 31.25rem;*/
+    margin-top: 12px;
 }
 
 .post-box .user-image {
@@ -109,6 +113,7 @@ body {
     border-radius: 0.4em;
     padding: 7px;
     text-transform: capitalize;
+    margin-left: auto;
 }
 
 .post-button:disabled {
@@ -131,7 +136,7 @@ body {
 
 @media only screen and (min-width: 768px) {
     .post-card .f-card {
-        width: 33%;
+        width: 100%;
     }
 }
 

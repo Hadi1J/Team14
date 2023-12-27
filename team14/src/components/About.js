@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function About() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "100%" }}>
       <Card.Body>
         <Card.Title>About</Card.Title>
         <Card.Text>
