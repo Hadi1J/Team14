@@ -1,14 +1,8 @@
 .post-card {
-
-    border: 1px solid #ccc;
-    
-   
-
-  margin: 0.625rem 0;
+  /*explainmargin : 0.625rem 0;*/
   padding: 0.625rem;
   justify-content: center;
   border-radius: 0.313rem;
-
 }
 
 .profile-info {
@@ -33,11 +27,10 @@
   margin-top: 0.652rem;
 }
 
-.commentText{
-    word-wrap: break-word;
+.commentText {
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 
 /*.comment-container {
     width: 33%;
@@ -51,264 +44,211 @@
   
     box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
 }*/
-.commentarea{
-    width: 33%;
-    height: fit-content;
-    background-color: lightgray;
+.commentarea {
+  width: 33%;
+  height: fit-content;
+  background-color: lightgray;
   border-radius: 15px;
-    margin: auto;
-    min-width: 350px;
-    margin-bottom:0.652rem;
-    padding:0.75rem; 
-  
-    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+  margin: auto;
+  min-width: 350px;
+  margin-bottom: 0.652rem;
+  padding: 0.75rem;
+
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
 }
 
-.commentText{
-    word-wrap: break-word;
+.commentText {
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
-.commentcss{
-    width: 38.33%;
-    margin: auto;
-    max-width: 100%;
-    resize: vertical;
-    background-color: lightgrey;
-    border-radius: 5px;
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    margin: auto;
-
+.commentcss {
+  width: 38.33%;
+  margin: auto;
+  max-width: 100%;
+  resize: vertical;
+  background-color: lightgrey;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin: auto;
 }
 
-  
-  
-
-.user-name{
-    font-weight: bold;
-     display: inline-block;
-     align-items: center;
-position: relative;
-top: -3rem;
-left: 0.3rem;
+.user-name {
+  font-weight: bold;
+  display: inline-block;
+  align-items: center;
+  position: relative;
+  top: -3rem;
+  left: 0.3rem;
 }
 
-.userphoto{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    position: relative;
-    right: 3.5rem;
-    bottom: 0.6rem;
-  
-
+.userphoto {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  position: relative;
+  right: 3.5rem;
+  bottom: 0.6rem;
 }
-.commentButton{
-    margin-left: 33.5%;
-    position: relative;
-    left: 9.5rem;
-    bottom: 2rem; ;
+.commentButton {
+  margin-left: 33.5%;
+  position: relative;
+  left: 9.5rem;
+  bottom: 2rem;
 }
-.timing{
-    display: flex;
-    font-size: small;
-    color: gray;
-    position: relative;
-    top: -4rem;
-    left: 1rem;
+.timing {
+  display: flex;
+  font-size: small;
+  color: gray;
+  position: relative;
+  top: -4rem;
+  left: 1rem;
 }
 
-
-.commentText{
-    position: relative;
-margin-left: 15px;
-bottom: 3rem;
+.commentText {
+  position: relative;
+  margin-left: 15px;
+  bottom: 3rem;
 }
-
-
 
 .interaction-buttons {
   margin-top: 10px;
 }
 
 button {
+  background-color: transparent;
 
-    background-color: transparent;
-    
-    
-
-
-    position: relative;
-    
-
+  position: relative;
 
   margin-right: 0.652rem;
   padding: 0.313rem 0.652rem;
   cursor: pointer;
-  background-color: #3498DB;
+  background-color: #3498db;
   color: #fff;
   border: none;
   border-radius: 0.25rem;
 }
-.likeComment{
-    background-color: transparent;
-    color:gray;
-    border-radius: 15px;
-    display: inline-block;
-   position: relative;
+.likeComment {
+  background-color: transparent;
+  color: gray;
+  border-radius: 15px;
+  display: inline-block;
+  position: relative;
   left: 31%;
   top: -0.75rem;
-
-
+}
 
 button:hover {
-
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
-
-#replybutton{
-    position: relative;
-     
-
-
-    margin-left: 5px ;
-    
-    background-color: rgb(241, 240, 240);
-    color: gray;
-    border: none;
-
+/* =================  */
+#replybutton {
+  position: relative;
+  left: 6rem;
+  top: -2rem;
+  background-color: rgb(241, 240, 240);
+  color: gray;
+  border: none;
 }
 
-#replybutton:hover{
-
-   color:rgb(161, 161, 236) ;
+#replybutton:hover {
+  color: rgb(161, 161, 236);
 }
 
-#LoadMoreB{
-    position: relative;
-    border: none;
-    background-color: white;
-    color: grey;
-    left: 150px;
-    
-    }
-    
-    
-    #LoadMoreB:hover{
-    
-        color: rgb(122, 122, 221);
-    }
+#LoadMoreB {
+  position: relative;
+  border: none;
+  background-color: white;
+  color: grey;
+  left: 150px;
+}
 
+#LoadMoreB:hover {
+  color: rgb(122, 122, 221);
+}
 
-    .ReplySection1
-    {
-
-        position: fixed;
-       
-        display: flex;
-          flex-direction: column;
-        float: left;
-
-    }
-
-    .RepliedSection
-    {
-
-        position: relative;
-        top:300px;
-        display: flex;
-          flex-direction: column;
-        
-
-
-    }
-
-
-    #LoadMore
-    {
-
-
-position: absolute;
-    }
-
-    #textt{
-
+.ReplySection1 {
+  position: fixed;
   display: flex;
-        padding: 10px;
-        font-size: 15px;
-        border: none;
-        background-color: lightgray;
-        color: rgb(8, 8, 8);
-        height: 50px;
-        outline: none;
-        width: 90%;
-  display: inline-block;
-          margin-left: 20px ;
-          margin-top: 10px;
-          resize: none;
-          
-  }
-  
-  .Replyy{
- 
- display: flex;
- height: 120px;
+  flex-direction: column;
+  float: left;
+}
+
+.RepliedSection {
+  position: relative;
+  top: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#LoadMore {
+  position: absolute;
+}
+
+#textt {
+  display: flex;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  background-color: lightgray;
+  color: rgb(8, 8, 8);
+  height: 50px;
+  outline: none;
+  width: 90%;
+
+  margin-left: 20px;
+  margin-top: 10px;
+  resize: none;
+}
+
+.Replyy {
+  position: relative;
+  top: 10px;
+  display: flex;
+  height: 100px;
   width: 33%;
   background-color: lightgray;
-border-radius: 15px;
-  
+  border-radius: 15px;
   margin: auto;
-  min-width: 350px;
-  margin-bottom:0.652rem;
-  padding:0.75rem; 
-  
+  min-width: 300px;
+  margin-bottom: 0.652rem;
+  padding: 0.75rem;
   box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-  
+}
 
-  }
-  
-
-  .PostedReplyy{
-  
-
-
-width: 33%;
+.PostedReplyy {
+  width: 33%;
   background-color: lightgray;
-border-radius: 15px;
+  border-radius: 15px;
   height: 20%;
   margin: auto;
-  min-width: 350px;
-  margin-bottom:2.5rem;
-  padding:0.75rem; 
-  
+  min-width: 300px;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem;
+
   box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-padding-bottom: -4rem;
-padding-top: -2rem;
-  }
-  
-  .content{
+  padding-bottom: -4rem;
+  padding-top: 5rem;
+}
 
-
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    width: 100%;
-    
-  }
-  .PIC
-  {
+.content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+}
+.PIC {
   float: left;
-      margin-left: 10px;
-      margin-top: 10px;
-     width: 40px;
-  
-  }
-  
-  .POST{
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 40px;
+}
+
+.POST {
   overflow-wrap: break-word;
   float: right;
   margin-right: 10px;
@@ -316,136 +256,102 @@ padding-top: -2rem;
   border: none;
   background-color: lightgray;
   border-radius: 15px;
-  border:none;
+  border: none;
   margin-top: 20px;
-  }
-  .POST:hover{
-  
-      color: rgb(58, 189, 233);
-  }
-  
-  
-  
-  
-  #Reactions1{
-  
-      position: fixed;
-  
-     top: 140px;
-  
-  }
+}
+.POST:hover {
+  color: rgb(58, 189, 233);
+}
 
-  #like{
+#like {
+  background-color: transparent;
+  color: gray;
+  border-radius: 15px;
+  position: relative;
+  left: 5%;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  bottom: -2.5rem;
+}
 
-    background-color: transparent;
-    color:gray;
-    border-radius: 15px;
-   position: relative;
-   left: 5%;
-    margin-top: 0rem;
-    bottom: -4rem;
-  }
+#REPLY {
+  background-color: transparent;
+  color: gray;
+  border-radius: 15px;
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
 
+#REPLY:hover {
+  color: rgb(61, 176, 214);
+}
+#like:hover {
+  color: rgb(61, 176, 214);
+}
 
-  #REPLY{
+.post-comments {
+  position: relative;
 
-    background-color: transparent;
-    color:gray;
-    border-radius: 15px;
-    display: inline-block;
-    position: relative;
-    left: 20%;
-    bottom: -1.9rem;
+  top: 10px;
+}
 
-  }
+.comment1 {
+  position: relative;
+  left: 20px;
+}
 
+#TimeE {
+  display: flex;
+  font-size: small;
+  color: gray;
+}
 
- 
+.reply-card {
+  width: 100%;
+  position: relative;
+  top: 50px;
+}
 
- 
- 
+#ProfileReply {
+  margin-left: 10px;
+  height: 50%;
+  margin-bottom: 7rem;
+}
 
-
-  #REPLY:hover{ color: rgb(61, 176, 214);  }
-  #like:hover{ color: rgb(61, 176, 214);  }
-
-  .post-comments{
-
-position: relative;
-
-
-top: 10px;
-
-  }
-
-  .comment1{
-
-    position: relative;
-left: 20px;
-
-
-  }
-
-  #TimeE{
-    
-
-display: flex;
-font-size: small;
-color: gray;
-
-  }
-
-  .reply-card{
-
-
-    position: relative;
-    top: 40px;
-    left: 70px;
-
-  }
-
-
-  #ProfileReply{
-
-margin-left: 10px;
-margin-bottom:40px;
-height: 10%;
-margin-bottom: 5rem;
-margin-top: -2rem;
-  }
- 
-
-  .ProfilePic{
-    display: flex;
-    position: relative;
-    right: 3.5rem;
-    display: flex;
+.ProfilePic {
+  display: flex;
+  position: relative;
+  top: -4rem;
+  right: 3.5rem;
+  display: flex;
   width: 10px;
-  }
+}
 
-#Activity{
-
+#Activity {
   margin-top: -5rem;
-  margin-bottom: -1rem;
- 
-  
-}
-  .DisplayforText{
-
-height: 20%;
-margin-top: -3rem;
-padding-bottom: 20px;
-overflow-wrap: break-word;
-    word-wrap: break-word;
-    width: 100%;
-    margin-left: 0.25rem;
-  }
-  
-=======
-  background-color: #2980B9;
+  margin-bottom: 1rem;
 }
 
-*,
+.profile-name {
+  position: relative;
+
+  top: -6rem;
+  right: 5px;
+}
+.DisplayforText {
+  height: 20%;
+  margin-top: -10rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+  margin-left: 0rem;
+}
+
+/* =================  */
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -453,9 +359,10 @@ overflow-wrap: break-word;
   box-sizing: border-box;
 }
 
-body {
+/*body {
   background-color: #e9ebee;
 }
+*/
 
 .f-card {
   width: 33%;
@@ -466,7 +373,7 @@ body {
   margin-bottom: 0.652rem;
   padding: 0.75rem;
   border-radius: 0.625rem;
-  box-shadow: 0 0 0.313rem rgba(0, 0, 0, .30);
+  box-shadow: 0 0 0.313rem rgba(0, 0, 0, 0.3);
 
   .content {
     overflow-wrap: break-word;
@@ -482,11 +389,10 @@ body {
   margin-right: 0.5rem;
   border-radius: 50%;
   width: 2.5em;
-  ;
   height: 2.5rem;
 }
 
-.co-name>a {
+.co-name > a {
   font-family: Helvetica;
   font-size: 0.875rem;
   font-weight: bold;
@@ -496,35 +402,35 @@ body {
   margin-bottom: 0.125rem;
 }
 
-.co-name>a:hover {
+.co-name > a:hover {
   text-decoration: underline;
 }
 
 .time {
   font-family: Helvetica;
   font-size: 0.75rem;
-  color: #90949C;
+  color: #90949c;
 }
 
-.time>a {
-  color: #90949C;
+.time > a {
+  color: #90949c;
   text-decoration: none;
 }
 
-.time>a:hover {
+.time > a:hover {
   text-decoration: underline;
 }
 
 .options {
   font-family: Helvetica;
   font-size: 0.75rem;
-  color: #E5E5E5;
+  color: #e5e5e5;
   float: right;
 }
 
 .options:hover {
   color: black;
-  color: rgba(0, 0, 0, .30);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .content {
@@ -546,14 +452,14 @@ body {
 
 .reference-content {
   border: 0.125rem solid black;
-  border: 0.125rem solid rgba(0, 0, 0, .1);
+  border: 0.125rem solid rgba(0, 0, 0, 0.1);
   border-top: 0;
   padding: 0.625rem 0.75rem 0.625rem 0.75rem;
 }
 
 .reference:hover .reference-content {
   border-color: black;
-  border-color: rgba(0, 0, 0, .15);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 .reference-title {
@@ -571,7 +477,7 @@ body {
 }
 
 .reference-font {
-  color: #90949C;
+  color: #90949c;
   font-family: Helvetica;
   font-size: 0.688rem;
   line-height: 0.688rem;
@@ -584,12 +490,12 @@ body {
 }
 
 .social-buttons {
-  color: #7F7F7F;
+  color: #7f7f7f;
   font-family: Helvetica;
   font-size: 0.75rem;
   font-weight: bold;
   line-height: 0.875rem;
-  border-top: 0.063rem solid #E5E5E5;
+  border-top: 0.063rem solid #e5e5e5;
   padding-top: 0.25rem;
 }
 
@@ -608,18 +514,19 @@ body {
   padding-right: 0.25rem;
 }
 
-.interaction-buttons button{
-    background: transparent;
-    color: #676a79;
+.interaction-buttons button {
+  background: transparent;
+  color: #676a79;
 }
-.interaction-buttons button:hover, .interaction-buttons button:focus {
-    color: #0c59bd;
+.interaction-buttons button:hover,
+.interaction-buttons button:focus {
+  color: #0c59bd;
 }
-.interaction-buttons .bi-chat-fill, .interaction-buttons .bi-hand-thumbs-up-fill{
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    vertical-align: -0.125em;
-
+.interaction-buttons .bi-chat-fill,
+.interaction-buttons .bi-hand-thumbs-up-fill {
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  vertical-align: -0.125em;
 }

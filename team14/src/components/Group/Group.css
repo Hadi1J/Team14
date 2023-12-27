@@ -1,0 +1,39 @@
+.nav-link {
+  font-family: 15px "Inter", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  align-content: center;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+a.nav-link {
+  color: #676a79 !important;
+}
+a.nav-link.active {
+  color: #0f6fec !important;
+}
+
+.text-muted {
+  justify-items: center;
+}
+
+.btn-primary-soft {
+  color: #0f6fec;
+  background-color: rgba(15, 111, 236, 0.1);
+}
+
+.btn-link {
+  color: #0f6fec;
+}
+
+.btn-linkjoined {
+  background-color: lightblue;
+  /* You can add other styles as needed */
+  color: white; /* Text color */
+  border: 1px solid lightblue; /* Border color */
+}
+
+.btn-linkjoined:hover {
+  background-color: skyblue; /* Change color on hover if desired */
+  border: 1px solid skyblue; /* Change border color on hover if desired */
+}
