@@ -1,6 +1,12 @@
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
+import Card from 'react-bootstrap/Card';
+/////{Reply}\\\\
+import Likereply from "./Reply/Likereply";
+import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
+/////////////////
+
 import {
   getDatabase,
   ref,
@@ -175,6 +181,7 @@ const Posts = ({ posts, loading }) => {
         id: newCommentKey,
         text: commentText,
         timestamp: timestamp,
+        timestamp: timestamp,
       });
 
       setCommentText("");
@@ -221,7 +228,7 @@ const Posts = ({ posts, loading }) => {
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
-        likesforReply: 5,
+        likesforReply: 0,
       });
 
       const updatedReplies = { ...replies };
@@ -232,6 +239,7 @@ const Posts = ({ posts, loading }) => {
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
+        likesforReply: 0
       });
       updatedReplies[selectedCommentForReply] = commentReplies;
 
@@ -244,24 +252,6 @@ const Posts = ({ posts, loading }) => {
       console.error("Error submitting reply:", error);
     }
   };
-
-  function ReplyTimeElapsed(ReplyDate) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - ReplyDate) / 1000);
-
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-        return hoursElapsed + " hour";
-      }
-    }
-  }
 
   function getTimeElapsedComment(commentTime) {
     var now = new Date();
@@ -279,28 +269,6 @@ const Posts = ({ posts, loading }) => {
         return hoursElapsed + " hour";
       }
     }
-  }
-
-  function Likereply({ likesforReply }) {
-    const [Counter, Act] = useState(likesforReply);
-    let k = likesforReply;
-    const handleLikeClick = () => {
-      Act((prevCounter) =>
-        prevCounter === 0
-          ? 1
-          : prevCounter > k
-          ? prevCounter - 1
-          : prevCounter + 1
-      );
-    };
-
-    return (
-      <div>
-        <button id="like" onClick={handleLikeClick}>
-          Like {Counter !== 0 && Counter}
-        </button>
-      </div>
-    );
   }
 
   return (
@@ -418,10 +386,22 @@ const Posts = ({ posts, loading }) => {
                                           setReplyText(e.target.value)
                                         }
                                       />
+
                                       <button
                                         className="POST"
                                         onClick={handleReplySubmit}
-                                      ></button>
+                                      >
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width="26"
+                                          height="26"
+                                          fill="currentColor"
+                                          className="bi bi-caret-right-fill"
+                                          viewBox="0 0 16 16"
+                                        >
+                                          <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg>
+                                      </button>
                                     </div>
                                   </>
                                 )}
@@ -443,14 +423,11 @@ const Posts = ({ posts, loading }) => {
                                               width={40}
                                             />
                                           </div>
-
                                           <div id="ProfileReply">
                                             <strong className="profile-name">
                                               {post.profilename}
                                               <div id="TimeE">
-                                                {ReplyTimeElapsed(
-                                                  reply.timestamp
-                                                )}
+                                                {ReplyTimeElapsed(reply.timestamp)}
                                               </div>
                                             </strong>
                                           </div>
@@ -458,12 +435,10 @@ const Posts = ({ posts, loading }) => {
                                             {reply.text}
                                           </p>
                                         </div>
-                                      </div>
-                                      <div id="Activity">
-                                        <likereply
-                                          likesforReply={reply.likesforReply}
-                                        />
-                                        <button id="REPLY"> Reply </button>
+                                        <div id="Activity">
+                                          <Likereply likesforReply={reply.likesforReply}/>
+                                          <button id="REPLY"   > Reply </button>
+                                        </div>
                                       </div>
                                     </div>
                                   ))}
@@ -483,4 +458,5 @@ const Posts = ({ posts, loading }) => {
     </div>
   );
 };
+
 export default Posts;
