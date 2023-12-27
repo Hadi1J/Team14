@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import PostManager from "./components/PostManager";
 import GroupFeed from "./components/group";
 import About from "./components/About";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import MainContent from './components/MainContent';
-
+import MainContent from "./components/MainContent";
 
 function App() {
-
-  const [likeCount, setLikeCount] = useState(0);
-
-    const addLike = () => {
-        setLikeCount(likeCount + 1);
-    };
   return (
     <div className="App">
-    <Header><Navbar/><MainContent/></Header>
+      <Navbar />
+
       <div className="container">
         <div className="row g-4">
           <GroupFeed />

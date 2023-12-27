@@ -32,44 +32,40 @@
   height: auto;
   margin-top: 0.652rem;
 }
+.typingcomment{
+  display: flex;
+  flex-wrap: nowrap;
+}
 
-.commentText{
-    word-wrap: break-word;
+.comment-container {
+     display: flex;
+     width: 100%;
+     margin-bottom: 5px;
+     flex-wrap: nowrap;
+     box-sizing: border-box;
+  max-width: 100%;
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
 
-/*.comment-container {
-    width: 33%;
-    background-color: rgb(204, 198, 198);
-  border-radius: 15px;
-    border-radius:0.188rem;
-    margin: auto;
-    min-width: 350px;
-    margin-bottom:0.652rem;
-    padding:0.75rem; 
-  
-    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-}*/
 .commentarea{
-    width: 33%;
+  width: 100%;
+    background-color: rgb(204, 198, 198);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
     height: fit-content;
-    background-color: lightgray;
-  border-radius: 15px;
-    margin: auto;
-    min-width: 350px;
-    margin-bottom:0.652rem;
-    padding:0.75rem; 
-  
-    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+    margin-bottom: 18px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+
 }
 
-.commentText{
-    word-wrap: break-word;
-  overflow-wrap: break-word;
-}
+
 .commentcss{
-    width: 38.33%;
+    width: 90%;
     margin: auto;
     max-width: 100%;
     resize: vertical;
@@ -89,44 +85,39 @@
 
 .user-name{
     font-weight: bold;
-     display: inline-block;
-     align-items: center;
-position: relative;
-top: -3rem;
-left: 0.3rem;
+    margin-left: 5px;
+    margin-top: 0.7rem;
+     
 }
 
 .userphoto{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    display: flex;
-    position: relative;
-    right: 3.5rem;
-    bottom: 0.6rem;
-  
-
+    display: inline-block;
+    margin-right: 5px;
+ 
 }
 .commentButton{
-    margin-left: 33.5%;
+    float: right;
     position: relative;
-    left: 9.5rem;
-    bottom: 2rem; ;
+    top: -2rem;
 }
 .timing{
-    display: flex;
-    font-size: small;
-    color: gray;
-    position: relative;
-    top: -4rem;
-    left: 1rem;
+  margin-top: 1.6rem;
+  margin-left: -2.8rem;
 }
 
 
 .commentText{
-    position: relative;
-margin-left: 15px;
-bottom: 3rem;
+  width: 100%;
+   word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-left: 0.5rem;
+   margin-top: 1rem;
+   margin-bottom: -0.8rem;
+    
 }
 
 
@@ -135,17 +126,10 @@ bottom: 3rem;
   margin-top: 10px;
 }
 
-button {
+  button {
 
     background-color: transparent;
-    
-    
-
-
     position: relative;
-    
-
-
   margin-right: 0.652rem;
   padding: 0.313rem 0.652rem;
   cursor: pointer;
@@ -153,35 +137,32 @@ button {
   color: #fff;
   border: none;
   border-radius: 0.25rem;
-}
+  }
 .likeComment{
+  
     background-color: transparent;
     color:gray;
-    border-radius: 15px;
-    display: inline-block;
-   position: relative;
-  left: 31%;
-  top: -0.75rem;
+ position: relative;
+ bottom: -1.3rem;
+ padding-right: 1rem;
+   
 
-
-
-button:hover {
-
-    background-color: #2980b9;
 }
+
 
 
 #replybutton{
-    position: relative;
-     
+  background-color: transparent;
+  color:gray;
+position: relative;
+bottom: -1.3rem;
+padding-right: 4rem;
 
+}
 
-    margin-left: 5px ;
-    
-    background-color: rgb(241, 240, 240);
-    color: gray;
-    border: none;
+#replybutton:hover{
 
+ color:rgb(161, 161, 236) ;
 }
 
 #replybutton:hover{
@@ -441,9 +422,8 @@ overflow-wrap: break-word;
     margin-left: 0.25rem;
   }
   
-=======
   background-color: #2980B9;
-}
+
 
 *,
 *:before,
