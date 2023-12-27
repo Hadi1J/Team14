@@ -3,6 +3,7 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import { database } from "../firebase";
 import "./Createpost.css";
 import logo from "./03.jpg";
+
 const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const staticProfileName = "Ahmed sheqo";
@@ -26,7 +27,7 @@ const CreatePost = () => {
     }
   };
   return (
-    <div className="container big">
+    <div className="container big" style={{ width: "95%" }}>
       <div className="post-box d-flex flex-column">
         <div className="d-flex align-items-center">
           <img
@@ -46,17 +47,14 @@ const CreatePost = () => {
         <hr />
         <div className="action-buttons d-flex justify-content-start">
           <button className="btn">
-
             <i className="bi bi-image-fill"></i>
             Photo
           </button>
           <button className="btn">
-
             <i className="bi bi-camera-reels-fill"></i>
             Video
           </button>
           <button className="btn">
-            
             <i className="bi bi-calendar2-event-fill"></i>
             Event
           </button>

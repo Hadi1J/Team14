@@ -1,6 +1,11 @@
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
+import Card from "react-bootstrap/Card";
+/////{Reply}\\\\
+import Likereply from "./Reply/Likereply";
+import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
+/////////////////
 import {
   getDatabase,
   ref,
@@ -55,6 +60,8 @@ const Posts = ({ posts, loading }) => {
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
+
+    setVisibleCommentCount(2);
   };
 
   const fetchRepliesForComment = async (postId, commentId) => {
@@ -119,16 +126,13 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
-  const handleComment = (postId) => {
-    setSelectedPostForComment(postId);
-    setCommentText("");
-    fetchCommentsForPost(postId);
-  };
-
-  /*function getTimeElapsed(postTime) {
+ 
+  
+  function getTimeElapsed(postTime) {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+  
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -139,147 +143,16 @@ const Posts = ({ posts, loading }) => {
         var hoursElapsed = Math.floor(minutesElapsed / 60);
         return hoursElapsed + " hour";
       }
-      
     }
   }
-  function getTimeElapsed(postTime) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+  const handleComment = (postId) => {
+    setSelectedPostForComment(postId);
+    setCommentText("");
+    fetchCommentsForPost(postId);
+  };
 
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    }
-     else 
-     {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) 
-      {
-        return minutesElapsed + " min";
-      } 
-      else 
-      {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-
-
-        if(hoursElapsed<24)
-
-        {return hoursElapsed + " hour";}
-
-        else{
-
-          var daysElapsed =Math.floor(hoursElapsed / 24)
-          return daysElapsed + " day ";
-        }
-
-
-
-
-      }
-    }
-  }
-  function getTimeElapsed(postTime) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-  
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
-        if (hoursElapsed < 24) {
-          return hoursElapsed + " hour";
-        } else {
-          var daysElapsed = Math.floor(hoursElapsed / 24);
-  
-          if (daysElapsed < 7) {
-            return daysElapsed + (daysElapsed === 1 ? " day" : " days");
-          } else {
-            var weeksElapsed = Math.floor(daysElapsed / 7);
-            return weeksElapsed + (weeksElapsed === 1 ? " week" : " weeks");
-          }
-        }
-      }
-    }
-  }
-  function getTimeElapsed(postTime) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-  
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
-        if (hoursElapsed < 24) {
-          return hoursElapsed + " hour";
-        } else {
-          var daysElapsed = Math.floor(hoursElapsed / 24);
-  
-          if (daysElapsed < 7) {
-            return daysElapsed + (daysElapsed === 1 ? " day" : " days");
-          } else if (daysElapsed < 30) {
-            var weeksElapsed = Math.floor(daysElapsed / 7);
-            return weeksElapsed + (weeksElapsed === 1 ? " week" : " weeks");
-          } else {
-            var monthsElapsed = Math.floor(daysElapsed / 30);
-            return monthsElapsed + (monthsElapsed === 1 ? " month" : " months");
-          }
-        }
-      }
-    }
-  }
-  */
-  function getTimeElapsed(postTime) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-  
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
-        if (hoursElapsed < 24) {
-          return hoursElapsed + " hour";
-        } else {
-          var daysElapsed = Math.floor(hoursElapsed / 24);
-  
-          if (daysElapsed < 7) {
-            return daysElapsed + (daysElapsed === 1 ? " day" : " days");
-          } else if (daysElapsed < 30) {
-            var weeksElapsed = Math.floor(daysElapsed / 7);
-            return weeksElapsed + (weeksElapsed === 1 ? " week" : " weeks");
-          } else if (daysElapsed < 365) {
-            var monthsElapsed = Math.floor(daysElapsed / 30);
-            return monthsElapsed + (monthsElapsed === 1 ? " month" : " months");
-          } else {
-            var yearsElapsed = Math.floor(daysElapsed / 365);
-            return yearsElapsed + (yearsElapsed === 1 ? " year" : " years");
-          }
-        }
-      }
-    }
-  }
-  
-  
-
-
-
+  const [loadedComments, setLoadedComments] = useState([]);
+  const [visibleCommentCount, setVisibleCommentCount] = useState(2);
 
   const handleCommentSubmit = async () => {
     try {
@@ -304,7 +177,10 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
+      
+
       fetchCommentsForPost(selectedPostForComment);
+
       const timestamp = Date.now();
 
       const commentsRef = ref(database, `comments/${selectedPostForComment}`);
@@ -314,6 +190,7 @@ const Posts = ({ posts, loading }) => {
         id: newCommentKey,
         text: commentText,
         timestamp: timestamp,
+        timestamp: timestamp,
       });
 
       setCommentText("");
@@ -322,6 +199,7 @@ const Posts = ({ posts, loading }) => {
       console.error("Error submitting comment:", error);
     }
   };
+
 
   const Like = () => {
     const [Counter, Act] = useState(0);
@@ -360,7 +238,7 @@ const Posts = ({ posts, loading }) => {
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
-        likesforReply: 5,
+        likesforReply: 0,
       });
 
       const updatedReplies = { ...replies };
@@ -371,6 +249,7 @@ const Posts = ({ posts, loading }) => {
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
+        likesforReply: 0,
       });
       updatedReplies[selectedCommentForReply] = commentReplies;
 
@@ -383,24 +262,6 @@ const Posts = ({ posts, loading }) => {
       console.error("Error submitting reply:", error);
     }
   };
-
-  function ReplyTimeElapsed(ReplyDate) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - ReplyDate) / 1000);
-
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-        return hoursElapsed + " hour";
-      }
-    }
-  }
 
   function getTimeElapsedComment(commentTime) {
     var now = new Date();
@@ -487,32 +348,32 @@ const Posts = ({ posts, loading }) => {
                       <div className="social-buttons">
                         <div className="interaction-buttons">
                           <button onClick={() => handleLike(post.id)}>
-                            <i className="bi bi-hand-thumbs-up-fill pe-1">
-                              
-                            </i>
+                            <i className="bi bi-hand-thumbs-up-fill pe-1"></i>
                             Like ({interactionData[post.id]?.likes || 0})
                           </button>
                           <button onClick={() => handleComment(post.id)}>
-                            <i className="bi bi-chat-fill pe-1">
-                              
-                              
-                            </i>
+                            <i className="bi bi-chat-fill pe-1"></i>
                             Comment ({interactionData[post.id]?.comments || 0})
                           </button>
                           {selectedPostForComment === post.id && (
                             <>
-                              <textarea
-                                className="commentcss"
-                                placeholder="Add a comment ..."
-                                value={commentText}
-                                onChange={(e) => setCommentText(e.target.value)}
-                              />
-                              <button
-                                onClick={handleCommentSubmit}
-                                className="commentButton"
-                              >
-                                Submit Comment
-                              </button>
+                              <div className="typingcomment">
+                                <img className="userphoto" src="1.jpg"></img>
+                                <textarea
+                                  className="commentcss"
+                                  placeholder="Add a comment ..."
+                                  value={commentText}
+                                  onChange={(e) =>
+                                    setCommentText(e.target.value)
+                                  }
+                                  onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                      e.preventDefault();
+                                      handleCommentSubmit();
+                                    }
+                                  }}
+                                />
+                              </div>
                             </>
                           )}
                           <div className="post-comments">
@@ -521,36 +382,30 @@ const Posts = ({ posts, loading }) => {
                                 key={comment.id}
                                 className="comment-container"
                               >
-                                {" "}
                                 <div className="commentarea">
-                                  {" "}
                                   <img
                                     className="userphoto"
                                     src="1.jpg"
                                     alt="User Photo"
-                                  />{" "}
-                                  <p className="user-name">abdallah</p>{" "}
+                                  />
+                                  <p className="user-name">abdallah</p>
                                   <div className="timing">
-                                    {" "}
-                                    {getTimeElapsedComment(
-                                      comment.timestamp
-                                    )}{" "}
-                                  </div>{" "}
+                                    {getTimeElapsedComment(comment.timestamp)}
+                                  </div>
                                   <p className="commentText">
-                                    {" "}
-                                    <strong>{comment.text}</strong>{" "}
-                                  </p>{" "}
-                                </div>{" "}
-                                <Like />{" "}
-                                <button
-                                  type="button"
-                                  id="replybutton"
-                                  onClick={() =>
-                                    handleReply(post.id, comment.id)
-                                  }
-                                >
-                                  Reply
-                                </button>
+                                    <strong>{comment.text}</strong>
+                                  </p>
+                                  <Like />
+                                  <button
+                                    type="button"
+                                    id="replybutton"
+                                    onClick={() =>
+                                      handleReply(post.id, comment.id)
+                                    }
+                                  >
+                                    Reply
+                                  </button>
+                                </div>
                                 {selectedCommentForReply === comment.id && (
                                   <>
                                     <div className="Replyy">
@@ -562,12 +417,11 @@ const Posts = ({ posts, loading }) => {
                                           setReplyText(e.target.value)
                                         }
                                       />
-
                                       <button
                                         className="POST"
                                         onClick={handleReplySubmit}
                                       >
-                                       <svg
+                                        <svg
                                           xmlns="http://www.w3.org/2000/svg"
                                           width="26"
                                           height="26"
@@ -625,6 +479,21 @@ const Posts = ({ posts, loading }) => {
                                 </div>
                               </div>
                             ))}
+                            <div className="lodemorecomments">
+                              {comments[post.id] &&
+                                visibleCommentCount <
+                                  comments[post.id].length && (
+                                  <button
+                                    onClick={() =>
+                                      setVisibleCommentCount(
+                                        (oldCount) => oldCount + 2
+                                      )
+                                    }
+                                  >
+                                    ... Load More Comments
+                                  </button>
+                                )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -638,5 +507,6 @@ const Posts = ({ posts, loading }) => {
     </div>
   );
 };
+
 export default Posts;
 
