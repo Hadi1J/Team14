@@ -1,8 +1,12 @@
 .post-card {
-  /*explainmargin : 0.625rem 0;*/
+
+width:100%;
+  margin: 0.625rem 0;
   padding: 0.625rem;
   justify-content: center;
   border-radius: 0.313rem;
+ margin-top: 20px;
+ 
 }
 
 .profile-info {
@@ -19,6 +23,8 @@
 
 .post-content {
   margin-top: 0.625rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-photo {
@@ -31,7 +37,7 @@
   flex-wrap: nowrap;
 }
 
-<<<<<<< HEAD
+
 .comment-container {
      display: flex;
      width: 100%;
@@ -39,14 +45,13 @@
      flex-wrap: nowrap;
      box-sizing: border-box;
   max-width: 100%;
-=======
-.commentText {
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
   word-wrap: break-word;
-  overflow-wrap: break-word;
+    overflow-wrap: break-word;
+  
 }
 
-<<<<<<< HEAD
+
+
 
 .commentarea{
   width: 100%;
@@ -115,109 +120,19 @@
     white-space: normal;
     margin-left: 0.5rem;
    margin-top: 1rem;
-   margin-bottom: -0.8rem;
-    
-=======
-/*.comment-container {
-    width: 33%;
-    background-color: rgb(204, 198, 198);
-  border-radius: 15px;
-    border-radius:0.188rem;
-    margin: auto;
-    min-width: 350px;
-    margin-bottom:0.652rem;
-    padding:0.75rem; 
-  
-    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-}*/
-.commentarea {
-  width: 33%;
-  height: fit-content;
-  background-color: lightgray;
-  border-radius: 15px;
-  margin: auto;
-  min-width: 350px;
-  margin-bottom: 0.652rem;
-  padding: 0.75rem;
+      
 
-  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-}
-
-.commentText {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-.commentcss {
-  width: 38.33%;
-  margin: auto;
-  max-width: 100%;
-  resize: vertical;
-  background-color: lightgrey;
-  border-radius: 5px;
-  border: none;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  margin: auto;
-}
-
-.user-name {
-  font-weight: bold;
-  display: inline-block;
-  align-items: center;
-  position: relative;
-  top: -3rem;
-  left: 0.3rem;
-}
-
-.userphoto {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  position: relative;
-  right: 3.5rem;
-  bottom: 0.6rem;
-}
-.commentButton {
-  margin-left: 33.5%;
-  position: relative;
-  left: 9.5rem;
-  bottom: 2rem;
-}
-.timing {
-  display: flex;
-  font-size: small;
-  color: gray;
-  position: relative;
-  top: -4rem;
-  left: 1rem;
-}
-
-.commentText {
-  position: relative;
-  margin-left: 15px;
-  bottom: 3rem;
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
 }
 
 .interaction-buttons {
   margin-top: 10px;
 }
-
-<<<<<<< HEAD
-  button {
-
-    background-color: transparent;
-    position: relative;
-=======
 button {
   background-color: transparent;
 
   position: relative;
 
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
+
   margin-right: 0.652rem;
   padding: 0.313rem 0.652rem;
   cursor: pointer;
@@ -225,47 +140,30 @@ button {
   color: #fff;
   border: none;
   border-radius: 0.25rem;
-<<<<<<< HEAD
-  }
-.likeComment{
-  
-    background-color: transparent;
-    color:gray;
- position: relative;
- bottom: -1.3rem;
- padding-right: 1rem;
-   
-=======
+
 }
-.likeComment {
+/*.likeComment {
   background-color: transparent;
   color: gray;
   border-radius: 15px;
   display: inline-block;
-  position: relative;
-  left: 31%;
+  position: absolute;
   top: -0.75rem;
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
+
+}*/
+.likeComment{
+  
+  background-color: transparent;
+  color:gray;
+position: absolute;
 
 }
+
 
 button:hover {
   background-color: #2980b9;
 }
 
-<<<<<<< HEAD
-
-#replybutton{
-  background-color: transparent;
-  color:gray;
-position: relative;
-bottom: -1.3rem;
-padding-right: 4rem;
-
-}
-
-#replybutton:hover{
-=======
 /* =================  */
 #replybutton{
     position: relative;
@@ -274,7 +172,6 @@ padding-right: 4rem;
     background-color: rgb(241, 240, 240);
     color: gray;
     border: none;
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
 
  color:rgb(161, 161, 236) ;
 }
@@ -529,11 +426,7 @@ right: 5px;
     margin-left: 0rem;
   }
   
-<<<<<<< HEAD
-  background-color: #2980B9;
 
-=======
->>>>>>> 3874fac97b7394d342ee2a1140fc019cb603c76d
 
  /* =================  */
 
@@ -714,4 +607,9 @@ right: 5px;
   font-variant: normal;
   text-transform: none;
   vertical-align: -0.125em;
+}
+
+.post-photo{
+  border-radius:0.4rem;
+  vertical-align: middle;
 }

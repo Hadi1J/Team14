@@ -1,6 +1,9 @@
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
+import Card from "react-bootstrap/Card";
+import Likereply from "./Reply/Likereply";
+import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
 import {
   getDatabase,
   ref,
@@ -55,6 +58,8 @@ const Posts = ({ posts, loading }) => {
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
+
+    setVisibleCommentCount(2);
   };
 
   const fetchRepliesForComment = async (postId, commentId) => {
@@ -119,19 +124,11 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
-  
-
-  const handleComment = (postId) => {
-    setSelectedPostForComment(postId);
-    setCommentText("");
-    fetchCommentsForPost(postId);
-  };
-
-
   function getTimeElapsed(postTime) {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
+
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -144,10 +141,14 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
+  const handleComment = (postId) => {
+    setSelectedPostForComment(postId);
+    setCommentText("");
+    fetchCommentsForPost(postId);
+  };
 
-
-
-
+  const [loadedComments, setLoadedComments] = useState([]);
+  const [visibleCommentCount, setVisibleCommentCount] = useState(2);
 
   const handleCommentSubmit = async () => {
     try {
@@ -172,13 +173,9 @@ const Posts = ({ posts, loading }) => {
         },
       }));
 
-      
-
-      
       fetchCommentsForPost(selectedPostForComment);
-const timestamp=Date.now();
 
-      fetchCommentsForPost(selectedPostForComment);
+      const timestamp = Date.now();
 
       const commentsRef = ref(database, `comments/${selectedPostForComment}`);
 
@@ -186,7 +183,8 @@ const timestamp=Date.now();
       await set(child(commentsRef, newCommentKey), {
         id: newCommentKey,
         text: commentText,
-        timestamp:timestamp,
+        timestamp: timestamp,
+        timestamp: timestamp,
       });
 
       setCommentText("");
@@ -196,46 +194,23 @@ const timestamp=Date.now();
     }
   };
 
-  
-  const Like=()=>{
-    const [Counter,Act] = useState(0);
-    
-    const handleLikeClick=()=> {
-    
-    Act((prevCounter) => (prevCounter === 0 ? 1 : 0));
-    }
-   
-    return(
-    <div>
-        <button className="likeComment"  onClick={handleLikeClick}  > Like  {Counter > 0 &&( Counter) }  </button>
-    
-    </div>
-    )
-    
-    
-    }
-  
- 
+  const Like = () => {
+    const [Counter, Act] = useState(0);
 
+    const handleLikeClick = () => {
+      Act((prevCounter) => (prevCounter === 0 ? 1 : 0));
+    };
 
+    return (
+      <div>
+        <button className="likeComment" onClick={handleLikeClick}>
+          {" "}
+          Like {Counter > 0 && Counter}{" "}
+        </button>
+      </div>
+    );
+  };
 
-    function getTimeElapsed(commentTime) {
-      var now = new Date();
-      var currentTime = now.getTime();
-      var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
-
-      if (secondsElapsed < 60) {
-          return secondsElapsed + " sec";
-      } else {
-          var minutesElapsed = Math.floor(secondsElapsed / 60);
-          if (minutesElapsed < 60) {
-              return minutesElapsed + " min";
-          } else {
-              var hoursElapsed = Math.floor(minutesElapsed / 60);
-              return hoursElapsed + " hour";
-          }
-      }
-  }
   const handleReply = (postId, commentId) => {
     setSelectedCommentForReply(commentId);
     setReplyText("");
@@ -267,7 +242,7 @@ const timestamp=Date.now();
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
-        likesforReply: 0
+        likesforReply: 0,
       });
       updatedReplies[selectedCommentForReply] = commentReplies;
 
@@ -284,7 +259,7 @@ const timestamp=Date.now();
   function getTimeElapsedComment(commentTime) {
     var now = new Date();
     var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - ReplyDate) / 1000);
+    var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
 
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
@@ -299,47 +274,30 @@ const timestamp=Date.now();
     }
   }
 
-  
-  function Like({ likesforReply }) {
+  function Likereply({ likesforReply }) {
     const [Counter, Act] = useState(likesforReply);
-  let k=likesforReply;
+    let k = likesforReply;
     const handleLikeClick = () => {
-      Act((prevCounter) => ((prevCounter === 0 ? 1 : (prevCounter > k ? prevCounter - 1 : prevCounter + 1))
-      ));
+      Act((prevCounter) =>
+        prevCounter === 0
+          ? 1
+          : prevCounter > k
+          ? prevCounter - 1
+          : prevCounter + 1
+      );
     };
-    
-  
+
     return (
       <div>
         <button id="like" onClick={handleLikeClick}>
-           Like {Counter !== 0 && Counter}
+          Like {Counter !== 0 && Counter}
         </button>
       </div>
     );
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////
 
-  function getTimeElapsed(postTime) {
-    var now = new Date();
-    var currentTime = now.getTime();
-    var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-
-    if (secondsElapsed < 60) {
-      return secondsElapsed + " sec";
-    } else {
-      var minutesElapsed = Math.floor(secondsElapsed / 60);
-      if (minutesElapsed < 60) {
-        return minutesElapsed + " min";
-      } else {
-        var hoursElapsed = Math.floor(minutesElapsed / 60);
-        return hoursElapsed + " hour";
-      }
-    }
-}
-    
   return (
     <div>
-      <h2>Posts</h2>
       {loading && <p>Loading posts...</p>}
       {!loading && posts.length === 0 && <p>No posts available.</p>}
       {!loading && posts.length > 0 && (
@@ -349,166 +307,185 @@ const timestamp=Date.now();
             .map((post) => (
               <div className="post-card" key={post.id}>
                 <div className="profile-info">
-                  <img
-                    alt="User profile picture"
-                    className="profile-picture"
-                    height={40}
-                    src={post.isMyPost ? logo : post.profilePicture}
-                    width={40}
-                  />
-                  <strong className="profile-name">{post.profilename}</strong>
-                </div>
-                <div className="post-content">
-                  <strong>{post.text}</strong>
-                  {post.photo && (
-                    <img alt="Post" className="post-photo" src={post.photo} />
-                  )}
-
-                  <p className="post-timestamp">
-                    {new Date(post.timestamp).toLocaleString()}
-                  </p>
-
-                  <div className="interaction-buttons">
-                    <button onClick={() => handleLike(post.id)}>
-                      Like ({interactionData[post.id]?.likes || 0})
-                    </button>
-
-                    <button onClick={() => handleComment(post.id)}>
-                      Comment ({interactionData[post.id]?.comments || 0})
-                    </button>
-                    {selectedPostForComment === post.id && (
-                      <>
-                        <textarea
-                    
-                        className="commentcss"
-                          placeholder="Add a comment ..."
-                          value={commentText}
-                          onChange={(e) => setCommentText(e.target.value)}
-                          
-                        />
-                        <button onClick={handleCommentSubmit} className="commentButton">
-                          Submit Comment
-                        </button>
-                      </>
-                    )}
-
-
-
-    {comments[post.id]?.map((comment) => (
-     
-        <div key={comment.id} className="comment-container">
-          <div className="commentarea">
-            <img className="userphoto" src="1.jpg" alt="User Photo" />
-                    <p className="user-name">abdallah</p>
-                    <div className="timing">  {getTimeElapsed(comment.timestamp)}  </div>
-
-                 <p className="commentText"> <strong>{comment.text}</strong> </p>
-                </div>
-               <Like />
-            </div>
-            
-        
-    ))}
-
-
-                </div>
-
-
-
- 
-
-  return (
-    <div>
-
-
-                    <div className="post-comments">
-                      {comments[post.id]?.map((comment) => (
-                        <div key={comment.id} className="comment-card">
-                          <div className="comment">
-                            <strong className="CommentSection">
-                              {comment.text}
-                            </strong>
-                            {/*/////////////////////////////////////////////////////////////////////////////////   { Reply Function }      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/}
-                            <button
-                              type="button"
-                              id="replybutton"
-                              onClick={() => handleReply(post.id, comment.id)}
-                            >
-                              Reply
-                            </button>
-                            <div className="ReplySection1"> </div>
-
-                            {selectedCommentForReply === comment.id && (
-                              <>
-                                <div className="Replyy">
-                                  <textarea
-                                    id="textt"
-                                    placeholder="Add a Reply ..."
-                                    value={replyText}
-                                    onChange={(e) =>
-                                      setReplyText(e.target.value)
+                  <div className="f-card">
+                    <div className="header">
+                      <img
+                        alt="User profile picture"
+                        className="profile-picture co-logo"
+                        height={40}
+                        src={post.isMyPost ? logo : post.profilePicture}
+                        width={40}
+                      />
+                      <div className="co-name">
+                        <strong className="">{post.profilename}</strong>
+                      </div>
+                      <div className="time">
+                        <a href="#">{getTimeElapsed(post.timestamp)}</a> Â·{" "}
+                        <i className="fa fa-globe" />
+                      </div>
+                    </div>
+                    <div className="content">
+                      <div className="post-content">
+                        {post.text}
+                        {post.photo && (
+                          <img
+                            alt="Post"
+                            className="post-photo"
+                            src={post.photo}
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <div className="social">
+                      <div className="social-content" />
+                      <div className="social-buttons">
+                        <div className="interaction-buttons">
+                          <button onClick={() => handleLike(post.id)}>
+                            <i className="bi bi-hand-thumbs-up-fill pe-1"></i>
+                            Like ({interactionData[post.id]?.likes || 0})
+                          </button>
+                          <button onClick={() => handleComment(post.id)}>
+                            <i className="bi bi-chat-fill pe-1"></i>
+                            Comment ({interactionData[post.id]?.comments || 0})
+                          </button>
+                          {selectedPostForComment === post.id && (
+                            <>
+                              <div className="typingcomment">
+                                <img className="userphoto" src="1.jpg"></img>
+                                <textarea
+                                  className="commentcss"
+                                  placeholder="Add a comment ..."
+                                  value={commentText}
+                                  onChange={(e) =>
+                                    setCommentText(e.target.value)
+                                  }
+                                  onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                      e.preventDefault();
+                                      handleCommentSubmit();
                                     }
+                                  }}
+                                />
+                              </div>
+                            </>
+                          )}
+                          <div className="post-comments">
+                            {comments[post.id]?.slice(0, visibleCommentCount).map((comment) => (
+                              <div
+                                key={comment.id}
+                                className="comment-container"
+                              ><img
+                                    className="userphoto"
+                                    src="1.jpg"
+                                    alt="User Photo"
                                   />
-
+                                <div className="commentarea">
+                                  
+                                  <p className="user-name">abdallah</p>
+                                  <div className="timing">
+                                    {getTimeElapsedComment(comment.timestamp)}
+                                  </div>
+                                  <p className="commentText">
+                                    <strong>{comment.text}</strong>
+                                  </p>
+                                  <Like />
                                   <button
-                                    className="POST"
-                                    onClick={handleReplySubmit}
+                                    type="button"
+                                    id="replybutton"
+                                    onClick={() =>
+                                      handleReply(post.id, comment.id)
+                                    }
                                   >
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="26"
-                                      height="26"
-                                      fill="currentColor"
-                                      class="bi bi-caret-right-fill"
-                                      viewBox="0 0 16 16"
-                                    >
-                                      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                                    </svg>
+                                    Reply
                                   </button>
                                 </div>
-                              </>
-                            )}
-
-                            <div className="replies">
-                              {replies[comment.id]?.map((reply) => (
-                                <div key={reply.id} className="reply-card">
-                                  <div className="reply">
-                                    <div className="PostedReplyy">
-                                      <div className="ProfilePic">
-                                        <img
-                                          alt="User profile picture"
-                                          className="profile-picture"
-                                          height={40}
-                                          src={
-                                            post.isMyPost
-                                              ? logo
-                                              : post.profilePicture
-                                          }
-                                          width={40}
-                                        />
-                                      </div>
-                                      <div id="ProfileReply">
-                                        <strong className="profile-name">
-                                          {post.profilename}<div id="TimeE">
-                                            {ReplyTimeElapsed(reply.timestamp)}
+                                {selectedCommentForReply === comment.id && (
+                                  <>
+                                    <div className="Replyy">
+                                      <textarea
+                                        id="textt"
+                                        placeholder="Add a Reply ..."
+                                        value={replyText}
+                                        onChange={(e) =>
+                                          setReplyText(e.target.value)
+                                        }
+                                      />
+                                      <button
+                                        className="POST"
+                                        onClick={handleReplySubmit}
+                                      >
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width="26"
+                                          height="26"
+                                          fill="currentColor"
+                                          className="bi bi-caret-right-fill"
+                                          viewBox="0 0 16 16"
+                                        >
+                                          <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </>
+                                )}
+                                <div className="replies">
+                                  {replies[comment.id]?.map((reply) => (
+                                    <div key={reply.id} className="reply-card">
+                                      <div className="reply">
+                                        <div className="PostedReplyy">
+                                          <div className="ProfilePic">
+                                            <img
+                                              alt="User profile picture"
+                                              className="profile-picture"
+                                              height={40}
+                                              src={
+                                                post.isMyPost
+                                                  ? logo
+                                                  : post.profilePicture
+                                              }
+                                              width={40}
+                                            />
                                           </div>
-                                          
-                                        </strong>
+                                        </div>
+                                        <div id="ProfileReply">
+                                          <strong className="profile-name">
+                                            {post.profilename}
+                                            <div id="TimeE">
+                                              {ReplyTimeElapsed(
+                                                reply.timestamp
+                                              )}
+                                            </div>
+                                          </strong>
+                                        </div>
+                                        <p className="DisplayforText">
+                                          {reply.text}
+                                        </p>
                                       </div>
-
-                                      <p className="DisplayforText">
-                                        {reply.text}
-                                      </p><div id="Activity">
-                                    <Like likesforReply={reply.likesforReply} />
-                                      <button id="REPLY"> Reply </button>
+                                      <div id="Activity">
+                                        <Likereply
+                                          likesforReply={reply.likesforReply}
+                                        />
+                                        <button id="REPLY"> Reply </button>
+                                      </div>
                                     </div>
-                                    </div>
-                                    
-                                  </div>
+                                  ))}
                                 </div>
-
-                                /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-                              ))}
+                              </div>
+                            ))}
+                            <div className="lodemorecomments">
+                              {comments[post.id] &&
+                                visibleCommentCount <
+                                  comments[post.id].length && (
+                                  <button
+                                    onClick={() =>
+                                      setVisibleCommentCount(
+                                        (oldCount) => oldCount + 2
+                                      )
+                                    }
+                                  >
+                                    ... Load More Comments
+                                  </button>
+                                )}
                             </div>
                           </div>
                         </div>
