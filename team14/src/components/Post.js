@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Likereply from "./Reply/Likereply";
 import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
 /////////////////
-
 import {
   getDatabase,
   ref,
@@ -44,6 +43,46 @@ const Posts = ({ posts, loading }) => {
 
     fetchInteractionData();
   }, []);
+
+
+  const fetchCommentsForPost = async (postId) => {
+    const database = getDatabase();
+    const commentsRef = ref(database, `comments/${postId}`);
+
+    try {
+      const snapshot = await get(commentsRef);
+      const data = snapshot.val();
+      const postComments = Object.values(data || {});
+
+      setComments((prevComments) => ({
+        ...prevComments,
+        [postId]: postComments,
+      }));
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+    
+    setVisibleCommentCount(2);
+  };
+
+  const fetchRepliesForComment = async (postId, commentId) => {
+    const database = getDatabase();
+    const repliesRef = ref(database, `replies/${postId}/${commentId}`);
+
+    try {
+      const snapshot = await get(repliesRef);
+      const data = snapshot.val();
+      const commentReplies = Object.values(data || {});
+
+      setReplies((prevReplies) => ({
+        ...prevReplies,
+        [commentId]: commentReplies,
+      }));
+    } catch (error) {
+      console.error("Error fetching replies:", error);
+    }
+  };
+
 
   const handleLike = (postId) => {
     const database = getDatabase();
@@ -89,47 +128,6 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
-  const fetchCommentsForPost = async (postId) => {
-    const database = getDatabase();
-    const commentsRef = ref(database, `comments/${postId}`);
-
-    try {
-      const snapshot = await get(commentsRef);
-      const data = snapshot.val();
-      const postComments = Object.values(data || {});
-
-      setComments((prevComments) => ({
-        ...prevComments,
-        [postId]: postComments,
-      }));
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    }
-  };
-
-  const fetchRepliesForComment = async (postId, commentId) => {
-    const database = getDatabase();
-    const repliesRef = ref(database, `replies/${postId}/${commentId}`);
-
-    try {
-      const snapshot = await get(repliesRef);
-      const data = snapshot.val();
-      const commentReplies = Object.values(data || {});
-
-      setReplies((prevReplies) => ({
-        ...prevReplies,
-        [commentId]: commentReplies,
-      }));
-    } catch (error) {
-      console.error("Error fetching replies:", error);
-    }
-  };
-
-  function handleComment(postId) {
-    setSelectedPostForComment(postId);
-    setCommentText("");
-    fetchCommentsForPost(postId);
-  }
 
   function getTimeElapsed(postTime) {
     var now = new Date();
@@ -147,6 +145,16 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
+const handleComment = (postId) => {
+    setSelectedPostForComment(postId);
+    setCommentText("");
+    fetchCommentsForPost(postId);
+  };
+
+
+  const [loadedComments, setLoadedComments] = useState([]); 
+  const [visibleCommentCount, setVisibleCommentCount] = useState(2);  
+
 
   const handleCommentSubmit = async () => {
     try {
@@ -172,6 +180,7 @@ const Posts = ({ posts, loading }) => {
       }));
 
       fetchCommentsForPost(selectedPostForComment);
+
       const timestamp = Date.now();
 
       const commentsRef = ref(database, `comments/${selectedPostForComment}`);
@@ -180,7 +189,6 @@ const Posts = ({ posts, loading }) => {
       await set(child(commentsRef, newCommentKey), {
         id: newCommentKey,
         text: commentText,
-        timestamp: timestamp,
         timestamp: timestamp,
       });
 
@@ -253,6 +261,8 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
+ 
+
   function getTimeElapsedComment(commentTime) {
     var now = new Date();
     var currentTime = now.getTime();
@@ -270,6 +280,30 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
+  
+
+  function Likereply({ likesforReply }) {
+    const [Counter, Act] = useState(likesforReply);
+    let k = likesforReply;
+    const handleLikeClick = () => {
+      Act((prevCounter) =>
+        prevCounter === 0
+          ? 1
+          : prevCounter > k
+          ? prevCounter - 1
+          : prevCounter + 1
+      );
+    };
+
+    return (
+      <div>
+        <button id="like" onClick={handleLikeClick}>
+          Like {Counter !== 0 && Counter}
+        </button>
+      </div>
+    );
+  }
+
 
   return (
     <div>
@@ -316,6 +350,7 @@ const Posts = ({ posts, loading }) => {
                       <div className="social-buttons">
                         <div className="interaction-buttons">
                           <button onClick={() => handleLike(post.id)}>
+
                             <i className="bi bi-hand-thumbs-up-fill pe-1"></i>
                             Like ({interactionData[post.id]?.likes || 0})
                           </button>
@@ -325,18 +360,26 @@ const Posts = ({ posts, loading }) => {
                           </button>
                           {selectedPostForComment === post.id && (
                             <>
+
+                            <div className="typingcomment">
+                            <img className="userphoto" src="1.jpg"></img>
                               <textarea
+                              
+
                                 className="commentcss"
                                 placeholder="Add a comment ..."
                                 value={commentText}
                                 onChange={(e) => setCommentText(e.target.value)}
+
+                              
+                                onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                 e.preventDefault(); 
+                                handleCommentSubmit();
+                                }
+                                }}
                               />
-                              <button
-                                onClick={handleCommentSubmit}
-                                className="commentButton"
-                              >
-                                Submit Comment
-                              </button>
+                              </div>
                             </>
                           )}
                           <div className="post-comments">
@@ -354,6 +397,7 @@ const Posts = ({ posts, loading }) => {
                                     alt="User Photo"
                                   />{" "}
                                   <p className="user-name">abdallah</p>{" "}
+
                                   <div className="timing">
                                     {" "}
                                     {getTimeElapsedComment(
@@ -364,9 +408,11 @@ const Posts = ({ posts, loading }) => {
                                     {" "}
                                     <strong>{comment.text}</strong>{" "}
                                   </p>{" "}
-                                </div>{" "}
-                                <Like />{" "}
+
+                                  {" "}
+                                  <Like />
                                 <button
+
                                   type="button"
                                   id="replybutton"
                                   onClick={() =>
@@ -375,6 +421,15 @@ const Posts = ({ posts, loading }) => {
                                 >
                                   Reply
                                 </button>
+
+                                  </div>{" "}
+                                  
+                                  
+                                  
+                                 </div>
+                                  
+                                
+
                                 {selectedCommentForReply === comment.id && (
                                   <>
                                     <div className="Replyy">
@@ -423,6 +478,7 @@ const Posts = ({ posts, loading }) => {
                                               width={40}
                                             />
                                           </div>
+                                          </div>
                                           <div id="ProfileReply">
                                             <strong className="profile-name">
                                               {post.profilename}
@@ -439,12 +495,23 @@ const Posts = ({ posts, loading }) => {
                                           <Likereply likesforReply={reply.likesforReply}/>
                                           <button id="REPLY"   > Reply </button>
                                         </div>
+
                                       </div>
                                     </div>
                                   ))}
                                 </div>
                               </div>
                             ))}
+
+                             <div className="lodemorecomments"> 
+                                  {
+                                   comments[post.id] && visibleCommentCount < comments[post.id].length && (
+                                    <button onClick={() => setVisibleCommentCount(oldCount => oldCount + 2)}>
+                                      ... Load More Comments 
+                                    </button>
+                                   )
+                                  }
+                                  </div>
                           </div>
                         </div>
                       </div>
