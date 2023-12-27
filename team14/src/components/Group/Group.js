@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./group.css";
+import "./Group.css";
 import apple from "./13.svg";
 import A from "./images/01 (1).jpg";
 import B from "./images/02.jpg";
@@ -12,13 +12,14 @@ import F from "./images/06.jpg";
 import G from "./images/07.jpg";
 import H from "./images/08.jpg";
 import I from "./images/09.jpg";
+import J from "./images/10.jpg";
 
 function UnderlineExample() {
   return (
     <Nav
       variant="underline"
       defaultActiveKey="/home"
-      style={{ backgroundColor: "#ffffff" }} // Add this style to remove background color
+      style={{ backgroundColor: "#ffffff" }}
     >
       <Nav.Item>
         <Nav.Link href="/home">Feed</Nav.Link>
@@ -48,10 +49,10 @@ function UnderlineExample() {
   );
 }
 
-function GroupFeed() {
+function Group() {
   return (
-    <Card className="text-center">
-      <Card.Body>
+    <Card className="text-center" style={{ width: "100%" }}>
+      <Card.Body style={{ marginBottom: "20px" }}>
         <div class="d-md-flex flex-wrap align-items-start text-center text-md-start">
           <div class="mb-2">
             <div class="avatar avatar-xl">
@@ -65,7 +66,9 @@ function GroupFeed() {
           </div>
 
           <div class="ms-md-4 mt-3">
-            <h1 class="h5 mb-0">Apple Education </h1>
+            <div className="titleapple " style={{ fontSize: "30px" }}>
+              Apple Education{" "}
+            </div>
             <ul class="nav nav-divider justify-content-center justify-content-md-start">
               <li class="nav-item"> Private group </li>
               <li class="nav-item"></li>
@@ -73,8 +76,17 @@ function GroupFeed() {
             </ul>
           </div>
           <div className="d-flex justify-content-center justify-content-md-start align-items-center mt-3 ms-lg-auto">
-            <button className="btn btn-link me-2">
-              <i className="bi bi-person-check-fill pe-1"></i> Joined
+            <button
+              type="button"
+              class="btn btn-success "
+              style={{ backgroundColor: "lightblue" }}
+            >
+              <i
+                className="bi bi-person-check-fill pe-1"
+                style={{ color: "blue" }}
+              >
+                Joined
+              </i>{" "}
             </button>
             <button className="btn btn-link me-2">
               <i className="fa-solid fa-plus pe-1"></i> Invite
@@ -92,33 +104,7 @@ function GroupFeed() {
               <ul
                 className="dropdown-menu dropdown-menu-end"
                 aria-labelledby="groupAction"
-              >
-                <li>
-                  <button className="dropdown-item" type="button">
-                    <i className="bi bi-bookmark fa-fw pe-2"></i> Share profile
-                    in a message
-                  </button>
-                </li>
-                <li>
-                  <button className="dropdown-item" type="button">
-                    <i className="bi bi-file-earmark-pdf fa-fw pe-2"></i> Save
-                    your profile to PDF
-                  </button>
-                </li>
-                <li>
-                  <button className="dropdown-item" type="button">
-                    <i className="bi bi-lock fa-fw pe-2"></i> Lock profile
-                  </button>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <button className="dropdown-item" type="button">
-                    <i className="bi bi-gear fa-fw pe-2"></i> Profile settings
-                  </button>
-                </li>
-              </ul>
+              ></ul>
             </div>
           </div>
         </div>
@@ -202,7 +188,7 @@ function GroupFeed() {
                 className="avatar-img rounded-circle"
                 width={40}
                 height={40}
-                src={H}
+                src={I}
                 alt="William Taylor's avatar"
               />
             </li>
@@ -211,7 +197,7 @@ function GroupFeed() {
                 className="avatar-img rounded-circle"
                 width={40}
                 height={40}
-                src={I}
+                src={J}
                 alt="Ella Harris's avatar"
               />
             </li>
@@ -230,11 +216,10 @@ function GroupFeed() {
       </Card.Body>
 
       <Card.Footer className="text-muted p-0">
-        {/* Include the UnderlineExample component here */}
         <UnderlineExample />
       </Card.Footer>
     </Card>
   );
 }
 
-export default GroupFeed;
+export default Group;
