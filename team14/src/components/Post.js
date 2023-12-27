@@ -1,7 +1,7 @@
 import "./post.css";
 import logo from "./03.jpg";
 import React, { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 /////{Reply}\\\\
 import Likereply from "./Reply/Likereply";
 import ReplyTimeElapsed from "./Reply/ReplyTimeElapsed";
@@ -44,7 +44,6 @@ const Posts = ({ posts, loading }) => {
     fetchInteractionData();
   }, []);
 
-
   const fetchCommentsForPost = async (postId) => {
     const database = getDatabase();
     const commentsRef = ref(database, `comments/${postId}`);
@@ -61,7 +60,7 @@ const Posts = ({ posts, loading }) => {
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
-    
+
     setVisibleCommentCount(2);
   };
 
@@ -82,7 +81,6 @@ const Posts = ({ posts, loading }) => {
       console.error("Error fetching replies:", error);
     }
   };
-
 
   const handleLike = (postId) => {
     const database = getDatabase();
@@ -128,7 +126,6 @@ const Posts = ({ posts, loading }) => {
     }
   };
 
-
   function getTimeElapsed(postTime) {
     var now = new Date();
     var currentTime = now.getTime();
@@ -145,16 +142,14 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
-const handleComment = (postId) => {
+  const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
     fetchCommentsForPost(postId);
   };
 
-
-  const [loadedComments, setLoadedComments] = useState([]); 
-  const [visibleCommentCount, setVisibleCommentCount] = useState(2);  
-
+  const [loadedComments, setLoadedComments] = useState([]);
+  const [visibleCommentCount, setVisibleCommentCount] = useState(2);
 
   const handleCommentSubmit = async () => {
     try {
@@ -247,7 +242,7 @@ const handleComment = (postId) => {
         id: newReplyKey,
         text: replyText,
         timestamp: timestamp,
-        likesforReply: 0
+        likesforReply: 0,
       });
       updatedReplies[selectedCommentForReply] = commentReplies;
 
@@ -260,8 +255,6 @@ const handleComment = (postId) => {
       console.error("Error submitting reply:", error);
     }
   };
-
- 
 
   function getTimeElapsedComment(commentTime) {
     var now = new Date();
@@ -280,7 +273,6 @@ const handleComment = (postId) => {
       }
     }
   }
-  
 
   function Likereply({ likesforReply }) {
     const [Counter, Act] = useState(likesforReply);
@@ -303,7 +295,6 @@ const handleComment = (postId) => {
       </div>
     );
   }
-
 
   return (
     <div>
@@ -350,7 +341,6 @@ const handleComment = (postId) => {
                       <div className="social-buttons">
                         <div className="interaction-buttons">
                           <button onClick={() => handleLike(post.id)}>
-
                             <i className="bi bi-hand-thumbs-up-fill pe-1"></i>
                             Like ({interactionData[post.id]?.likes || 0})
                           </button>
@@ -360,25 +350,22 @@ const handleComment = (postId) => {
                           </button>
                           {selectedPostForComment === post.id && (
                             <>
-
-                            <div className="typingcomment">
-                            <img className="userphoto" src="1.jpg"></img>
-                              <textarea
-                              
-
-                                className="commentcss"
-                                placeholder="Add a comment ..."
-                                value={commentText}
-                                onChange={(e) => setCommentText(e.target.value)}
-
-                              
-                                onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                 e.preventDefault(); 
-                                handleCommentSubmit();
-                                }
-                                }}
-                              />
+                              <div className="typingcomment">
+                                <img className="userphoto" src="1.jpg"></img>
+                                <textarea
+                                  className="commentcss"
+                                  placeholder="Add a comment ..."
+                                  value={commentText}
+                                  onChange={(e) =>
+                                    setCommentText(e.target.value)
+                                  }
+                                  onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                      e.preventDefault();
+                                      handleCommentSubmit();
+                                    }
+                                  }}
+                                />
                               </div>
                             </>
                           )}
@@ -388,48 +375,30 @@ const handleComment = (postId) => {
                                 key={comment.id}
                                 className="comment-container"
                               >
-                                {" "}
                                 <div className="commentarea">
-                                  {" "}
                                   <img
                                     className="userphoto"
                                     src="1.jpg"
                                     alt="User Photo"
-                                  />{" "}
-                                  <p className="user-name">abdallah</p>{" "}
-
+                                  />
+                                  <p className="user-name">abdallah</p>
                                   <div className="timing">
-                                    {" "}
-                                    {getTimeElapsedComment(
-                                      comment.timestamp
-                                    )}{" "}
-                                  </div>{" "}
+                                    {getTimeElapsedComment(comment.timestamp)}
+                                  </div>
                                   <p className="commentText">
-                                    {" "}
-                                    <strong>{comment.text}</strong>{" "}
-                                  </p>{" "}
-
-                                  {" "}
+                                    <strong>{comment.text}</strong>
+                                  </p>
                                   <Like />
-                                <button
-
-                                  type="button"
-                                  id="replybutton"
-                                  onClick={() =>
-                                    handleReply(post.id, comment.id)
-                                  }
-                                >
-                                  Reply
-                                </button>
-
-                                  </div>{" "}
-                                  
-                                  
-                                  
-                                 </div>
-                                  
-                                
-
+                                  <button
+                                    type="button"
+                                    id="replybutton"
+                                    onClick={() =>
+                                      handleReply(post.id, comment.id)
+                                    }
+                                  >
+                                    Reply
+                                  </button>
+                                </div>
                                 {selectedCommentForReply === comment.id && (
                                   <>
                                     <div className="Replyy">
@@ -441,7 +410,6 @@ const handleComment = (postId) => {
                                           setReplyText(e.target.value)
                                         }
                                       />
-
                                       <button
                                         className="POST"
                                         onClick={handleReplySubmit}
@@ -478,40 +446,47 @@ const handleComment = (postId) => {
                                               width={40}
                                             />
                                           </div>
-                                          </div>
-                                          <div id="ProfileReply">
-                                            <strong className="profile-name">
-                                              {post.profilename}
-                                              <div id="TimeE">
-                                                {ReplyTimeElapsed(reply.timestamp)}
-                                              </div>
-                                            </strong>
-                                          </div>
-                                          <p className="DisplayforText">
-                                            {reply.text}
-                                          </p>
                                         </div>
-                                        <div id="Activity">
-                                          <Likereply likesforReply={reply.likesforReply}/>
-                                          <button id="REPLY"   > Reply </button>
+                                        <div id="ProfileReply">
+                                          <strong className="profile-name">
+                                            {post.profilename}
+                                            <div id="TimeE">
+                                              {ReplyTimeElapsed(
+                                                reply.timestamp
+                                              )}
+                                            </div>
+                                          </strong>
                                         </div>
-
+                                        <p className="DisplayforText">
+                                          {reply.text}
+                                        </p>
+                                      </div>
+                                      <div id="Activity">
+                                        <Likereply
+                                          likesforReply={reply.likesforReply}
+                                        />
+                                        <button id="REPLY"> Reply </button>
                                       </div>
                                     </div>
                                   ))}
                                 </div>
                               </div>
                             ))}
-
-                             <div className="lodemorecomments"> 
-                                  {
-                                   comments[post.id] && visibleCommentCount < comments[post.id].length && (
-                                    <button onClick={() => setVisibleCommentCount(oldCount => oldCount + 2)}>
-                                      ... Load More Comments 
-                                    </button>
-                                   )
-                                  }
-                                  </div>
+                            <div className="lodemorecomments">
+                              {comments[post.id] &&
+                                visibleCommentCount <
+                                  comments[post.id].length && (
+                                  <button
+                                    onClick={() =>
+                                      setVisibleCommentCount(
+                                        (oldCount) => oldCount + 2
+                                      )
+                                    }
+                                  >
+                                    ... Load More Comments
+                                  </button>
+                                )}
+                            </div>
                           </div>
                         </div>
                       </div>
