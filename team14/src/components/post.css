@@ -50,6 +50,7 @@
       transition: none;
   }*/
 .comment-container {
+
   display: flex;
   width: 100%;
   margin-bottom: 5px;
@@ -58,10 +59,11 @@
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-left: -10rem;
 }
 
 .commentarea {
-  width: 92%;
+  width: 110%;
   background-color: #eef0f2;
   border-radius: 15px;
   display: flex;
@@ -71,7 +73,8 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   min-height: 100%;
-  min-width: 88%;
+  min-width: 110%;
+  
 }
 
 .commentcss {
@@ -100,7 +103,8 @@
   height: 40px;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 5px;
+  margin-left: 2rem;
+  margin-right: 10px;
 }
 .commentButton {
   float: right;
@@ -163,36 +167,6 @@ button:hover {
   color: rgb(161, 161, 236);
 }
 
-#LoadMoreB {
-  position: relative;
-  border: none;
-  background-color: white;
-  color: grey;
-  left: 150px;
-}
-
-#LoadMoreB:hover {
-  color: rgb(122, 122, 221);
-}
-
-.ReplySection1 {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  float: left;
-}
-
-.RepliedSection {
-  position: relative;
-  top: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-#LoadMore {
-  position: absolute;
-}
-
 #textt {
   display: flex;
   padding: 10px;
@@ -203,53 +177,48 @@ button:hover {
   height: 50px;
   outline: none;
   width: 90%;
-
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 15px;
   resize: none;
 }
 
 .Replyy {
-  position: relative;
-  right: 40rem;
-  bottom: -10rem;
+  
+
   display: flex;
   height: 100px;
-  width: 33%;
+  width: 80%;
   background-color: #eef0f2;
   border-radius: 15px;
   margin: auto;
-  min-width: 300px;
-  margin-bottom: 0.652rem;
+  min-width: 50%;
+  margin-top: 1.652rem;
   padding: 0.75rem;
   box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+  margin-bottom:0.652rem ;
 }
 
 #Replysection {
   margin-left: -5rem;
-  margin-bottom: 10rem;
-  width: 33%;
-  min-width: auto;
-  padding: 0;
+  width: 100%;
+
 }
+#ALL{
 
+  margin-left: 10rem;
+  
+}
 .PostedReplyy {
-  display: flex;
-  position: relative;
-  float: left;
-  width: 47rem;
-
-  height: 7rem;
-  top: 10rem;
-  right: 40rem;
   background-color: #eef0f2;
   border-radius: 15px;
-  margin: auto;
-  min-width: 300px;
-  padding: 0.75rem;
-  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-  padding-bottom: -5rem;
+  width: 110%;
+  height: auto;
   padding-top: 5rem;
+  min-width: 5%;
+  max-width: 110%;
+  display: flex;
+ padding-right: 1rem;
+
 }
 
 .content {
@@ -281,26 +250,24 @@ button:hover {
 
 #like {
   position: relative;
+  top: -1.5rem;
   background-color: transparent;
   color: gray;
   border-radius: 15px;
-  position: relative;
-  right: 39rem;
-  top: 10.45rem;
-  margin-top: 0rem;
-  margin-bottom: 2rem;
-  bottom: -2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
 }
 
 #REPLY {
+  position: relative;
+  top: -4rem;
   background-color: transparent;
   color: gray;
   border-radius: 15px;
   display: inline-block;
-  position: relative;
-  right: 35rem;
-  top: 7rem;
-  margin-bottom: 0.5rem;
+  margin-left: 5rem;
+  margin-bottom: .5rem;
 }
 
 #REPLY:hover {
@@ -325,6 +292,7 @@ button:hover {
   display: flex;
   font-size: small;
   color: gray;
+  
 }
 
 .reply-card {
@@ -348,27 +316,28 @@ button:hover {
   width: 10px;
 }
 
-#Activity {
-  margin-top: -5rem;
-  margin-bottom: 1rem;
-}
+
 
 .profile-name {
   position: relative;
 
-  right: 40rem;
-  top: 3.5rem;
+  
+  top: -6.7rem;
 }
 .DisplayforText {
-  position: relative;
-  top: 7.5rem;
-  right: 39rem;
-  height: 20%;
-  margin-top: -10rem;
-  overflow-wrap: break-word;
+
+  text-wrap: wrap;
+  background-color: #eef0f2;
+  border-radius: 15px;
+  margin-top: -14rem;
+  flex-wrap: wrap;
+  height: fit-content;
   word-wrap: break-word;
-  width: 100%;
-  margin-left: 0rem;
+  overflow-wrap: break-word;
+  min-height: 100%;
+  min-width: 110%;
+margin-top: -12rem;
+padding: 1rem;
 }
 
 /* =================  */
