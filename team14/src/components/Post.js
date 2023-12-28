@@ -387,6 +387,8 @@ const Posts = ({ posts, loading }) => {
                             {comments[post.id]
                               ?.slice(0, visibleCommentCount)
                               .map((comment) => (
+
+                                <div id="ALL" >
                                 <div
                                   key={comment.id}
                                   className="comment-container"
@@ -415,6 +417,7 @@ const Posts = ({ posts, loading }) => {
                                     >
                                       Reply
                                     </button>
+                                  </div>
                                   </div>
                                   <div id="Replysection">
                                     {selectedCommentForReply === comment.id && (
@@ -494,6 +497,7 @@ const Posts = ({ posts, loading }) => {
                                       ))}
                                     </div>
                                   </div>
+                                
                                 </div>
                               ))}
                             <div className="lodemorecomments">
