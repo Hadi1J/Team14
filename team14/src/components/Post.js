@@ -128,7 +128,7 @@ const Posts = ({ posts, loading }) => {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - postTime) / 1000);
-  
+
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -137,12 +137,12 @@ const Posts = ({ posts, loading }) => {
         return minutesElapsed + " min";
       } else {
         var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
+
         if (hoursElapsed < 24) {
           return hoursElapsed + " hour";
         } else {
           var daysElapsed = Math.floor(hoursElapsed / 24);
-  
+
           if (daysElapsed < 7) {
             return daysElapsed + (daysElapsed === 1 ? " day" : " days");
           } else if (daysElapsed < 30) {
@@ -159,7 +159,7 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
-  
+
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
@@ -279,7 +279,7 @@ const Posts = ({ posts, loading }) => {
     var now = new Date();
     var currentTime = now.getTime();
     var secondsElapsed = Math.floor((currentTime - commentTime) / 1000);
-  
+
     if (secondsElapsed < 60) {
       return secondsElapsed + " sec";
     } else {
@@ -288,12 +288,12 @@ const Posts = ({ posts, loading }) => {
         return minutesElapsed + " min";
       } else {
         var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
+
         if (hoursElapsed < 24) {
           return hoursElapsed + " hour";
         } else {
           var daysElapsed = Math.floor(hoursElapsed / 24);
-  
+
           if (daysElapsed < 7) {
             return daysElapsed + (daysElapsed === 1 ? " day" : " days");
           } else if (daysElapsed < 30) {
@@ -310,7 +310,6 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
-  
 
   return (
     <div>
@@ -336,7 +335,7 @@ const Posts = ({ posts, loading }) => {
                         <strong className="">{post.profilename}</strong>
                       </div>
                       <div className="time">
-                        <a href="#">{getTimeElapsed(post.timestamp)}</a> {"."}
+                        <a href="#">{getTimeElapsed(post.timestamp)}</a> ·{" "}
                         <i className="fa fa-globe" />
                       </div>
                     </div>
