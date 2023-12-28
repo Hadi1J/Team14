@@ -27,7 +27,7 @@ const CreatePost = () => {
     }
   };
   return (
-    <div className="container big" style={{ width: "95%" }}>
+    <div className="container big create-post-div">
       <div className="post-box d-flex flex-column">
         <div className="d-flex align-items-center">
           <img
