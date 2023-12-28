@@ -335,8 +335,8 @@ const Posts = ({ posts, loading }) => {
                         <strong className="">{post.profilename}</strong>
                       </div>
                       <div className="time">
-                        <a href="#">{getTimeElapsed(post.timestamp)}</a> ·{" "}
-                        <i className="fa fa-globe" />
+                        <a href="#">{getTimeElapsed(post.timestamp)}</a>
+                        <i class="bi bi-dot"></i> <i className="fa fa-globe" />
                       </div>
                     </div>
                     <div className="content">

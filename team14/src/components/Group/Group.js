@@ -68,10 +68,17 @@ function Group() {
           <div class="ms-md-4 mt-3">
             <div className="titleapple " style={{ fontSize: "30px" }}>
               Apple Education{" "}
+              <i
+                class="bi bi-patch-check-fill text-success small"
+                style={{ color: "#0abc86" }}
+              ></i>
             </div>
             <ul class="nav nav-divider justify-content-center justify-content-md-start">
               <li class="nav-item"> Private group </li>
-              <li class="nav-item"></li>
+              <li class="nav-item">
+                {" "}
+                <i class="bi bi-dot"></i>
+              </li>
               <li class="nav-item"> 28.3K members </li>
             </ul>
           </div>
