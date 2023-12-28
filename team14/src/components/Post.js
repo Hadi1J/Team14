@@ -320,7 +320,7 @@ const Posts = ({ posts, loading }) => {
                         <strong className="">{post.profilename}</strong>
                       </div>
                       <div className="time">
-                        <a href="#">{getTimeElapsed(post.timestamp)}</a> ·{" "}
+                        <a href="#">{getTimeElapsed(post.timestamp)}</a> Â·{" "}
                         <i className="fa fa-globe" />
                       </div>
                     </div>
@@ -370,17 +370,17 @@ const Posts = ({ posts, loading }) => {
                             </>
                           )}
                           <div className="post-comments">
-                            {comments[post.id]?.map((comment) => (
+                            {comments[post.id]?.slice(0, visibleCommentCount).map((comment) => (
                               <div
                                 key={comment.id}
                                 className="comment-container"
-                              >
-                                <div className="commentarea">
-                                  <img
+                              ><img
                                     className="userphoto"
                                     src="1.jpg"
                                     alt="User Photo"
                                   />
+                                <div className="commentarea">
+                                  
                                   <p className="user-name">abdallah</p>
                                   <div className="timing">
                                     {getTimeElapsedComment(comment.timestamp)}
