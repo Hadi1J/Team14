@@ -45,7 +45,7 @@ const CreatePost = () => {
           />
         </div>
         <hr />
-        <div className="action-buttons d-flex justify-content-start">
+        <div className="action-buttons d-flex flex-wrap align-items-center-start">
           <button className="btn">
             <i className="bi bi-image-fill"></i>
             Photo
