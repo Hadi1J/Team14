@@ -12,12 +12,12 @@
 .post-box {
   background-color: #fff;
   border-radius: 0.625rem;
- box-shadow: 0 0 0.313rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.313rem rgba(0, 0, 0, 0.3);
   padding: 1.25rem;
   margin: 1.25rem 0px;
   width: 100%;
   margin-top: 5px;
-
+  box-sizing: border-box;
 }
 
 .post-box .user-image {
@@ -102,6 +102,7 @@
   padding: 7px;
   text-transform: capitalize;
   margin-left: auto;
+  display: inline-block;
 }
 
 .post-button:disabled {
@@ -143,4 +144,3 @@
     gap: 6px;
   }
 }
-
