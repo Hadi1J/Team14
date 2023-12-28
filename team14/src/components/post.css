@@ -1,45 +1,41 @@
 .post-card {
+  width: 100%;
+  margin: 0.625rem 0;
+  padding: 0.625rem;
+  justify-content: center;
+  border-radius: 0.313rem;
+  margin-top: 20px;
+}
 
-  width:100%;
-    margin: 0.625rem 0;
-    padding: 0.625rem;
-    justify-content: center;
-    border-radius: 0.313rem;
-   margin-top: 20px;
-   
-  }
-  
-  .profile-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-picture {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    margin-right: 0.625rem;
-  }
-  
-  .post-content {
-    margin-top: 0.625rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .post-photo {
-    max-width: 100%;
-    height: auto;
-    margin-top: 0.652rem;
-  }
-  .typingcomment
-  {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  
-  
-  /*.comment-container {
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-right: 0.625rem;
+}
+
+.post-content {
+  margin-top: 0.625rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-photo {
+  max-width: 100%;
+  height: auto;
+  margin-top: 0.652rem;
+}
+.typingcomment {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/*.comment-container {
        display: flex;
        width: 33%;
        margin-bottom: 5px;
@@ -53,594 +49,510 @@
       position: relative;
       transition: none;
   }*/
-  .comment-container
-   {
-    display: flex;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 5px;
-    flex-wrap: nowrap;
-    box-sizing: border-box;
-    
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  min-width: 100%;
-
-  }
-  
-  
-  
-  
-  .commentarea{
-    width: 92%;
-      background-color:#eef0f2;
-      border-radius: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      height: fit-content;
-      margin-bottom: 18px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    min-height: 100%;
-  min-width: 88%;
-
-  }
-  
-  
-  .commentcss{
-      width: 90%;
-      margin: auto;
-      max-width: 100%;
-      resize: vertical;
-      background-color: #eef0f2;
-      border-radius: 5px;
-      border: none;
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 5px;
-      margin-left: 5px;
-      margin: auto;
-  
-  }
-  
-    
-    
-  
-  .user-name{
-      font-weight: bold;
-      margin-left: 5px;
-      margin-top: 0.7rem;
-       
-  }
-  
-  .userphoto{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 5px;
-   
-  }
-  .commentButton{
-      float: right;
-      position: relative;
-      top: -2rem;
-  }
-  .timing{
-    margin-top: 1.6rem;
-    margin-left: -2.8rem;
-  }
-  
-  
-  .commentText{
-    width: 100%;
-     word-wrap: break-word;
-      overflow-wrap: break-word;
-      white-space: normal;
-      margin-left: 0.5rem;
-     margin-top: 1rem;
-        
-  
-  }
-  
-  .interaction-buttons {
-    margin-top: 10px;
-  }
-  button {
-    background-color: transparent;
-  
-    position: relative;
-  
-  
-    margin-right: 0.652rem;
-    padding: 0.313rem 0.652rem;
-    cursor: pointer;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 0.25rem;
-  
-  }
-  .likeComment {
-    background-color: transparent;
-    color: gray;
-    border-radius: 15px;
-    display: inline-block;
-    position: relative;
-    bottom: -1.2rem;
-  
-  }
-  
-  
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-  
-  /* =================  */
-  #replybutton{
-      position: relative;
-      left: 1rem ;
-      top: 1.2rem;
-      
-      
-      border: none;
-  
-   
-  }
-  
-  #replybutton:hover {
-    color: rgb(161, 161, 236);
-  }
-  
-  #LoadMoreB {
-    position: relative;
-    border: none;
-    background-color: white;
-    color: grey;
-    left: 150px;
-  }
-  
-  #LoadMoreB:hover {
-    color: rgb(122, 122, 221);
-  }
-  
-  
-      .ReplySection1
-      {
-  
-          position: fixed;
-          display: flex;
-            flex-direction: column;
-          float: left;
-  
-      }
-  
-      .RepliedSection
-      {
-  
-        position: relative;
-          top:300px;
-          display: flex;
-          flex-direction: column;
-        
-      }
-  
-  
-      #LoadMore
-      {
-  
-  
-  position: absolute;
-      }
-  
-      #textt{
-  
-               display: flex;
-          padding: 10px;
-          font-size: 15px;
-          border: none;
-          background-color: #eef0f2  ;
-          color: rgb(8, 8, 8);
-          height: 50px;
-          outline: none;
-          width: 90%;
-           
-            margin-left: 20px ;
-            margin-top: 10px;
-            resize: none;
-            
-    }
-    
-    .Replyy{
- 
-      position: relative;
-      right: 40rem;
-      bottom: -10rem;
-     display: flex;
-     height: 100px;
-     width: 33%;
-     background-color: #eef0f2
-
-     ;
-      border-radius: 15px;
-     margin: auto;
-     min-width: 300px;
-     margin-bottom:0.652rem;
-     padding:0.75rem; 
-     box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-    }
-    
-  
-    #Replysection
-    {
-
-
-
-      box-sizing: border-box;
-
- margin-left:  -5rem;
- margin-bottom:  10rem;
- width: 33%;
- min-width:auto;
- padding: 0;
- 
-    }
-
-    .PostedReplyy{
-      display: flex;
-   /*position: relative;*/
-   float: left;
-    width: 47rem;
-    
-    height: 7rem;
-    top: 10rem;
-    right: 40rem;
-    background-color: #eef0f2    ;
-    border-radius: 15px;
-    margin: auto;
-    min-width: 300px;
-    padding:0.75rem; 
-    box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
-    padding-bottom: -5rem;
-    padding-top:5rem;
-
-    }
-    
-    .content{
-  
-  
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      width: 100%;
-      
-    }
-    .PIC
-    {
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 40px;
-  }
-  
-  .POST {
-    overflow-wrap: break-word;
-    float: right;
-    margin-right: 10px;
-    color: grey;
-    border: none;
-    background-color: lightgray;
-    border-radius: 15px;
-    border: none;
-    margin-top: 20px;
-    }
-    .POST:hover{
-    
-        color: rgb(58, 189, 233);
-    }
-    
-    
-    
-    
-  
-    #like{
-     position: relative;
-      background-color: transparent;
-      color:gray;
-      border-radius: 15px;
-     position: relative;
-     right: 39rem;
-     top: 10.45rem;
-      margin-top: 0rem;
-      margin-bottom: 2rem;
-      bottom: -2.5rem;
-
-
-
-    }
-  
-  
-    #REPLY{
-  
-      background-color: transparent;
-      color:gray;
-      border-radius: 15px;
-      display: inline-block;
-      position: relative;
-      right: 35rem;
-      top: 7rem;
-      margin-bottom: 0.5rem;
-    }
-  
-  
-    #REPLY:hover{ color: rgb(61, 176, 214);  }
-    #like:hover{ color: rgb(61, 176, 214);  }
-  
-    .post-comments{
-  
-   position: relative;
-  
-  
-   top: 10px;
-  
-    }
-  
-    .comment1{
-  
-      position: relative;
-       left: 20px;
-  
-  
-    }
-  
-    #TimeE{
-      
-  
+.comment-container {
   display: flex;
-  font-size:small;
+  width: 100%;
+  margin-bottom: 5px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.commentarea {
+  width: 92%;
+  background-color: #eef0f2;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  margin-bottom: 18px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 100%;
+  min-width: 88%;
+}
+
+.commentcss {
+  width: 90%;
+  margin: auto;
+  max-width: 100%;
+  resize: vertical;
+  background-color: #eef0f2;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin: auto;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 0.7rem;
+}
+
+.userphoto {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+.commentButton {
+  float: right;
+  position: relative;
+  top: -2rem;
+}
+.timing {
+  margin-top: 1.6rem;
+  margin-left: -2.8rem;
+}
+
+.commentText {
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.interaction-buttons {
+  margin-top: 10px;
+}
+button {
+  background-color: transparent;
+
+  position: relative;
+
+  margin-right: 0.652rem;
+  padding: 0.313rem 0.652rem;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+}
+.likeComment {
+  background-color: transparent;
   color: gray;
-  
-    }
-  
-    .reply-card{
-  
-      
-     width: 100%;
-      position: relative;
-      top: 50px;
-      
-  
-    }
-  
-  
-    #ProfileReply{
-  
+  border-radius: 15px;
+  display: inline-block;
+  position: relative;
+  bottom: -1.2rem;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* =================  */
+#replybutton {
+  position: relative;
+  left: 1rem;
+  top: 1.2rem;
+
+  border: none;
+}
+
+#replybutton:hover {
+  color: rgb(161, 161, 236);
+}
+
+#LoadMoreB {
+  position: relative;
+  border: none;
+  background-color: white;
+  color: grey;
+  left: 150px;
+}
+
+#LoadMoreB:hover {
+  color: rgb(122, 122, 221);
+}
+
+.ReplySection1 {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
+
+.RepliedSection {
+  position: relative;
+  top: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#LoadMore {
+  position: absolute;
+}
+
+#textt {
+  display: flex;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  background-color: #eef0f2;
+  color: rgb(8, 8, 8);
+  height: 50px;
+  outline: none;
+  width: 90%;
+
+  margin-left: 20px;
+  margin-top: 10px;
+  resize: none;
+}
+
+.Replyy {
+  position: relative;
+  right: 40rem;
+  bottom: -10rem;
+  display: flex;
+  height: 100px;
+  width: 33%;
+  background-color: #eef0f2;
+  border-radius: 15px;
+  margin: auto;
+  min-width: 300px;
+  margin-bottom: 0.652rem;
+  padding: 0.75rem;
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+}
+
+#Replysection {
+  margin-left: -5rem;
+  margin-bottom: 10rem;
+  width: 33%;
+  min-width: auto;
+  padding: 0;
+}
+
+.PostedReplyy {
+  display: flex;
+  position: relative;
+  float: left;
+  width: 47rem;
+
+  height: 7rem;
+  top: 10rem;
+  right: 40rem;
+  background-color: #eef0f2;
+  border-radius: 15px;
+  margin: auto;
+  min-width: 300px;
+  padding: 0.75rem;
+  box-shadow: 0 0 0.313rem rgba(138, 136, 136, 0.3);
+  padding-bottom: -5rem;
+  padding-top: 5rem;
+}
+
+.content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+}
+.PIC {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 40px;
+}
+
+.POST {
+  overflow-wrap: break-word;
+  float: right;
+  margin-right: 10px;
+  color: grey;
+  border: none;
+  background-color: lightgray;
+  border-radius: 15px;
+  border: none;
+  margin-top: 20px;
+}
+.POST:hover {
+  color: rgb(58, 189, 233);
+}
+
+#like {
+  position: relative;
+  background-color: transparent;
+  color: gray;
+  border-radius: 15px;
+  position: relative;
+  right: 39rem;
+  top: 10.45rem;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  bottom: -2.5rem;
+}
+
+#REPLY {
+  background-color: transparent;
+  color: gray;
+  border-radius: 15px;
+  display: inline-block;
+  position: relative;
+  right: 35rem;
+  top: 7rem;
+  margin-bottom: 0.5rem;
+}
+
+#REPLY:hover {
+  color: rgb(61, 176, 214);
+}
+#like:hover {
+  color: rgb(61, 176, 214);
+}
+
+.post-comments {
+  position: relative;
+
+  top: 10px;
+}
+
+.comment1 {
+  position: relative;
+  left: 20px;
+}
+
+#TimeE {
+  display: flex;
+  font-size: small;
+  color: gray;
+}
+
+.reply-card {
+  width: 100%;
+  position: relative;
+  top: 50px;
+}
+
+#ProfileReply {
   margin-left: 10px;
   height: 50%;
   margin-bottom: 7rem;
-    }
-   
-  
-    .ProfilePic{
-      display: flex;
-      position: relative;
-      top: -5rem;
-      right: 3.5rem;
-      display: flex;
-    width: 10px;
-  }
-  
-  #Activity {
-    margin-top: -5rem;
-    margin-bottom: 1rem;
-  }
-    
-  
-  .profile-name{
-  
+}
+
+.ProfilePic {
+  display: flex;
   position: relative;
-  
+  top: -5rem;
+  right: 3.5rem;
+  display: flex;
+  width: 10px;
+}
+
+#Activity {
+  margin-top: -5rem;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  position: relative;
+
   right: 40rem;
   top: 3.5rem;
-  
-  
-  }
-    .DisplayforText{
+}
+.DisplayforText {
   position: relative;
-     top: 7.5rem;
-     right: 39rem;
-      height: 20%;
-      margin-top: -10rem;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      width: 100%;
-      margin-left: 0rem;
-    }
-    
-  
-  
-   /* =================  */
-  
-  *:before,
-  *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  /*body {
+  top: 7.5rem;
+  right: 39rem;
+  height: 20%;
+  margin-top: -10rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+  margin-left: 0rem;
+}
+
+/* =================  */
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*body {
     background-color: #e9ebee;
   }
   */
-  
-  .f-card {
-    width: 33%;
-    background-color: white;
-    border-radius: 0.188rem;
-    margin: auto;
-    min-width: 350px;
-    margin-bottom: 0.652rem;
-    padding: 0.75rem;
-    border-radius: 0.625rem;
-    box-shadow: 0 0 0.313rem rgba(0, 0, 0, 0.3);
-  
-    .content {
-      overflow-wrap: break-word;
-    }
-  }
-  
-  .header {
-    margin-bottom: 1.063rem;
-  }
-  
-  .co-logo {
-    float: left;
-    margin-right: 0.5rem;
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5rem;
-  }
-  
-  .co-name > a {
-    font-family: Helvetica;
-    font-size: 0.875rem;
-    font-weight: bold;
-    line-height: 1.38;
-    color: #365899;
-    text-decoration: none;
-    margin-bottom: 0.125rem;
-  }
-  
-  .co-name > a:hover {
-    text-decoration: underline;
-  }
-  
-  .time {
-    font-family: Helvetica;
-    font-size: 0.75rem;
-    color: #90949c;
-  }
-  
-  .time > a {
-    color: #90949c;
-    text-decoration: none;
-  }
-  
-  .time > a:hover {
-    text-decoration: underline;
-  }
-  
-  .options {
-    font-family: Helvetica;
-    font-size: 0.75rem;
-    color: #e5e5e5;
-    float: right;
-  }
-  
-  .options:hover {
-    color: black;
-    color: rgba(0, 0, 0, 0.3);
-  }
-  
+
+.f-card {
+  width: 33%;
+  background-color: white;
+  border-radius: 0.188rem;
+  margin: auto;
+  min-width: 350px;
+  margin-bottom: 0.652rem;
+  padding: 0.75rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.313rem rgba(0, 0, 0, 0.3);
+
   .content {
-    clear: both;
-    font-family: Helvetica, sans-serif;
-    font-size: 0.875rem;
-    line-height: 1.38;
+    overflow-wrap: break-word;
   }
-  
-  .reference {
-    width: 476px;
-  }
-  
-  .reference-thumb {
-    display: block;
-    width: 29.75rem;
-    height: 15.563rem;
-  }
-  
-  .reference-content {
-    border: 0.125rem solid black;
-    border: 0.125rem solid rgba(0, 0, 0, 0.1);
-    border-top: 0;
-    padding: 0.625rem 0.75rem 0.625rem 0.75rem;
-  }
-  
-  .reference:hover .reference-content {
-    border-color: black;
-    border-color: rgba(0, 0, 0, 0.15);
-  }
-  
-  .reference-title {
-    font-family: Georgia;
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 1.375rem;
-    margin-bottom: 0.313rem;
-  }
-  
-  .reference-subtitle {
-    font-family: Helvetica;
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-  
-  .reference-font {
-    color: #90949c;
-    font-family: Helvetica;
-    font-size: 0.688rem;
-    line-height: 0.688rem;
-    text-transform: uppercase;
-    padding-top: 0.563rem;
-  }
-  
-  .social {
-    margin-top: 0.75rem;
-  }
-  
-  .social-buttons {
-    color: #7f7f7f;
-    font-family: Helvetica;
-    font-size: 0.75rem;
-    font-weight: bold;
-    line-height: 0.875rem;
-    border-top: 0.063rem solid #e5e5e5;
-    padding-top: 0.25rem;
-  }
-  
-  .social-buttons span {
-    font-size: 0.75rem;
-    margin-right: 1.25rem;
-    padding: 0.25rem 0.25rem 0.25rem 0;
-  }
-  
-  .social-buttons span:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .social-buttons span i {
-    padding-right: 0.25rem;
-  }
-  
-  .interaction-buttons button {
-    background: transparent;
-    color: #676a79;
-  }
-  .interaction-buttons button:hover,
-  .interaction-buttons button:focus {
-    color: #0c59bd;
-  }
-  .interaction-buttons .bi-chat-fill,
-  .interaction-buttons .bi-hand-thumbs-up-fill {
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    vertical-align: -0.125em;
-  }
-  
-  .post-photo{
-    border-radius:0.4rem;
-    vertical-align: middle;
-  }
+}
+
+.header {
+  margin-bottom: 1.063rem;
+}
+
+.co-logo {
+  float: left;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5rem;
+}
+
+.co-name > a {
+  font-family: Helvetica;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.38;
+  color: #365899;
+  text-decoration: none;
+  margin-bottom: 0.125rem;
+}
+
+.co-name > a:hover {
+  text-decoration: underline;
+}
+
+.time {
+  font-family: Helvetica;
+  font-size: 0.75rem;
+  color: #90949c;
+}
+
+.time > a {
+  color: #90949c;
+  text-decoration: none;
+}
+
+.time > a:hover {
+  text-decoration: underline;
+}
+
+.options {
+  font-family: Helvetica;
+  font-size: 0.75rem;
+  color: #e5e5e5;
+  float: right;
+}
+
+.options:hover {
+  color: black;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+  clear: both;
+  font-family: Helvetica, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.38;
+}
+
+.reference {
+  width: 476px;
+}
+
+.reference-thumb {
+  display: block;
+  width: 29.75rem;
+  height: 15.563rem;
+}
+
+.reference-content {
+  border: 0.125rem solid black;
+  border: 0.125rem solid rgba(0, 0, 0, 0.1);
+  border-top: 0;
+  padding: 0.625rem 0.75rem 0.625rem 0.75rem;
+}
+
+.reference:hover .reference-content {
+  border-color: black;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.reference-title {
+  font-family: Georgia;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.375rem;
+  margin-bottom: 0.313rem;
+}
+
+.reference-subtitle {
+  font-family: Helvetica;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.reference-font {
+  color: #90949c;
+  font-family: Helvetica;
+  font-size: 0.688rem;
+  line-height: 0.688rem;
+  text-transform: uppercase;
+  padding-top: 0.563rem;
+}
+
+.social {
+  margin-top: 0.75rem;
+}
+
+.social-buttons {
+  color: #7f7f7f;
+  font-family: Helvetica;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 0.875rem;
+  border-top: 0.063rem solid #e5e5e5;
+  padding-top: 0.25rem;
+}
+
+.social-buttons span {
+  font-size: 0.75rem;
+  margin-right: 1.25rem;
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+
+.social-buttons span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.social-buttons span i {
+  padding-right: 0.25rem;
+}
+
+.interaction-buttons button {
+  background: transparent;
+  color: #676a79;
+}
+.interaction-buttons button:hover,
+.interaction-buttons button:focus {
+  color: #0c59bd;
+}
+.interaction-buttons .bi-chat-fill,
+.interaction-buttons .bi-hand-thumbs-up-fill {
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  vertical-align: -0.125em;
+}
+
+.post-photo {
+  border-radius: 0.4rem;
+  vertical-align: middle;
+}

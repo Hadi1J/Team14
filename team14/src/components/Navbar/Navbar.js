@@ -12,7 +12,7 @@ const Navbar = ({ cartCount }) => {
       className="navbar navbar-expand-lg navbar-light bg-white"
       style={{
         paddingLeft: "100px",
-        paddingRight: "500px",
+        paddingRight: "100px",
         marginBottom: "20px",
       }}
     >
