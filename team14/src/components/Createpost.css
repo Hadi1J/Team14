@@ -32,6 +32,9 @@
   box-shadow: none;
   margin-left: 0.625rem;
   font-size: 1rem;
+  resize: none;
+  border: none;
+  outline: none;
 }
 
 .post-input::placeholder {
