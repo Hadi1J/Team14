@@ -137,12 +137,11 @@ const Posts = ({ posts, loading }) => {
         return minutesElapsed + " min";
       } else {
         var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
+
         if (hoursElapsed < 24) {
           return hoursElapsed + " hour";
         } else {
           var daysElapsed = Math.floor(hoursElapsed / 24);
-  
           if (daysElapsed < 7) {
             return daysElapsed + (daysElapsed === 1 ? " day" : " days");
           } else if (daysElapsed < 30) {
@@ -159,7 +158,6 @@ const Posts = ({ posts, loading }) => {
       }
     }
   }
-  
   const handleComment = (postId) => {
     setSelectedPostForComment(postId);
     setCommentText("");
@@ -288,12 +286,12 @@ const Posts = ({ posts, loading }) => {
         return minutesElapsed + " min";
       } else {
         var hoursElapsed = Math.floor(minutesElapsed / 60);
-  
+
         if (hoursElapsed < 24) {
           return hoursElapsed + " hour";
         } else {
           var daysElapsed = Math.floor(hoursElapsed / 24);
-  
+
           if (daysElapsed < 7) {
             return daysElapsed + (daysElapsed === 1 ? " day" : " days");
           } else if (daysElapsed < 30) {
@@ -336,8 +334,8 @@ const Posts = ({ posts, loading }) => {
                         <strong className="">{post.profilename}</strong>
                       </div>
                       <div className="time">
-                        <a href="#">{getTimeElapsed(post.timestamp)}</a> {"."}
-                        <i className="fa fa-globe" />
+                        <a href="#">{getTimeElapsed(post.timestamp)}</a>
+                        <i class="bi bi-dot"></i> <i className="fa fa-globe" />
                       </div>
                     </div>
                     <div className="content">
